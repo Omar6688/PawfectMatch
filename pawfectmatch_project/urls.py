@@ -22,4 +22,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('core.urls')),
     path('services/', include('services.urls')),
+    path('bookings/', include('bookings.urls')),
 ]
