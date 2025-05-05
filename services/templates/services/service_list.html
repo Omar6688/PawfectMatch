@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+
+{% block title %}Services | PawfectMatch{% endblock %}
+
+{% block content %}
+<div class="text-center py-5">
+    <h1 class="display-4">Pet Services</h1>
+    <p class="lead">Browse our available services for your furry friends</p>
+</div>
+
+<hr>
+
+<div class="row">
+    {% for service in services %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+            {% if service.image_url %}
+            <img src="{{ service.image_url }}" class="card-img-top" alt="{{ service.name }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ service.name }}</h5>
+                <p class="card-text">{{ service.description }}</p>
+                <p class="card-text"><strong>Price:</strong> ${{ service.price }}</p>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-center">No services available at the moment.</p>
+    {% endfor %}
+</div>
+{% endblock %}
