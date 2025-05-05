@@ -13,18 +13,22 @@
 
 <div class="row text-center py-4">
     <div class="col-md-4">
-        <h3>Adopt</h3>
-        <p>Connect with animals in need of a loving home.</p>
+        <a href="#" class="info-box text-decoration-none text-dark">
+            <h3>Adopt</h3>
+            <p>Connect with animals in need of a loving home.</p>
+        </a>    
     </div>
     <div class="col-md-4">
-        <a href="{% url 'service_list' %}" class="text-decoration-none text-dark">
+        <a href="{% url 'service_list' %}" class="info-box text-decoration-none text-dark">
             <h3>Pet Services</h3>
             <p>Book grooming, training, and vet services near you.</p>
         </a>
     </div>
     <div class="col-md-4">
-        <h3>Support</h3>
-        <p>Help shelters and rescues by donating or volunteering.</p>
+        <a href="{% url 'support' %}" class="info-box text-decoration-none text-dark">
+            <h3>Support</h3>
+            <p>Help shelters and rescues by donating or volunteering.</p>
+        </a>
     </div>
 </div>
 
