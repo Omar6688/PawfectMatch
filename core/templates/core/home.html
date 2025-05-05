@@ -25,4 +25,25 @@
         <p>Help shelters and rescues by donating or volunteering.</p>
     </div>
 </div>
+
+<hr>
+
+<h2 class="text-center my-4">Available Pets</h2>
+<div class="row">
+    {% for pet in pets %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+            <img src="{{ pet.image_url }}" class="card-img-top" alt="{{ pet.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ pet.name }}</h5>
+                <p class="card-text"><strong>Breed:</strong> {{ pet.breed }}</p>
+                <p class="card-text"><strong>Age:</strong> {{ pet.age }} years</p>
+                <p class="card-text">{{ pet.description }}</p>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-center">No pets available at the moment.</p>
+    {% endfor %}
+</div>
 {% endblock %}
