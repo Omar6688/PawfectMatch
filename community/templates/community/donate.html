@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Donate to PawfectMatch</h2>
+  <p>Your donation helps us feed, house, and care for more animals in need.</p>
+  <p><strong>This is a demo section — no real payments are processed.</strong></p>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Donate</button>
+  </form>
+</div>
+{% endblock %}

@@ -25,4 +25,5 @@ urlpatterns = [
     path('bookings/', include('bookings.urls')),
     path('support/', include('support.urls')),
     path('adopt/', include('adoptions.urls')),
+    path('support/', include('community.urls')),
 ]
