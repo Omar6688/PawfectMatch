@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}
+
+{% block title %}Logged Out | PawfectMatch{% endblock %}
+
+{% block content %}
+<div class="container py-5 text-center">
+    <h2>You’ve been logged out 🐾</h2>
+    <p class="lead">Thank you for visiting PawfectMatch.</p>
+    <a href="{% url 'account_login' %}" class="btn btn-outline-primary mt-3">Log back in</a>
+</div>
+{% endblock %}
