@@ -369,5 +369,190 @@ The `urls.py` files are organized to include:
 
 ---
 
-Let me know once this is added and committed — then we’ll move to the **Skeleton Plane**, including your wireframes, database (ERD), and security practices. Ready?
+
+
+## 🦴 The Skeleton Plane
+
+### 🔹 Wireframes
+
+Before development began, wireframes were created to map out the layout and flow of the site on mobile, tablet, and desktop. These low-fidelity sketches helped plan key design decisions including page structure, navigation, and responsive layouts.
+
+Each of the following wireframes includes:
+
+- **Mobile view (320px+)**
+- **Tablet view (768px+)**
+- **Desktop view (1024px+)**
+
+📸 **Wireframe Previews**
+
+| Mobile | Tablet | Desktop |
+|--------|--------|---------|
+| ![Mobile Wireframe](docs/wireframe-mobile.png) | ![Tablet Wireframe](docs/wireframe-tablet.png) | ![Desktop Wireframe](docs/wireframe-desktop.png) |
+
+> _Note: Replace these placeholders once final wireframe screenshots are added._
+
+---
+
+### 🗃️ Database Design (ERD)
+
+The Entity Relationship Diagram (ERD) below outlines the core models and relationships used in the project. This design allows for flexible, scalable data management and clear separation of user-specific content.
+
+📸 **ERD Preview**
+
+![ERD Diagram](docs/erd-diagram.png)
+
+| Model     | Field         | Type         | Notes                             |
+|-----------|---------------|--------------|------------------------------------|
+| Pet       | name          | CharField    | Pet’s name                         |
+|           | breed         | CharField    | Pet’s breed                        |
+|           | age           | IntegerField | Pet’s age                          |
+|           | description   | TextField    | About the pet                      |
+|           | image_url     | URLField     | Display photo                      |
+|           | available     | BooleanField | Availability toggle                |
+|           | created_by    | ForeignKey   | Linked to user (optional feature)  |
+| Service   | name          | CharField    | Type of pet service                |
+|           | description   | TextField    | Service details                    |
+|           | price         | DecimalField | Cost of service                    |
+| Booking   | user          | ForeignKey   | Linked to registered user          |
+|           | service       | ForeignKey   | Linked to a Service                |
+|           | booking_date  | DateField    | User-selected service date         |
+|           | message       | TextField    | Optional user message              |
+
+---
+
+### 🔐 Security
+
+The following security best practices were implemented to protect user data and maintain integrity of the application:
+
+- **Authentication & Authorization:** Implemented via `django-allauth` to manage user accounts.
+- **Environment Variables:** All sensitive settings (e.g., `SECRET_KEY`, database credentials) are hidden using `.env` and `os.environ`.
+- **Database Access:** Models such as Bookings are linked to individual users to ensure private access.
+- **Custom Error Pages:** Friendly custom templates for 403, 404, and 500 errors to guide the user if issues occur.
+- **CSRF Protection:** Enabled by default with Django middleware on all forms.
+- **Input Validation:** Forms use Django’s built-in validation and widgets (e.g., date picker) to ensure correct inputs.
+
+
+
+## 🎨 The Surface Plane
+
+### 🖥️ Design Overview
+
+PawfectMatch is designed to be warm, welcoming, and user-friendly — reflecting the heart of pet adoption and support. The site uses generous white space, soft contrast, clear buttons, and mobile-first responsiveness to ensure an enjoyable experience on all screen sizes.
+
+Design priorities included:
+
+- A clean **centered layout** with balanced spacing
+- Clear, bold **calls to action** (like "View Available Pets")
+- Intuitive navigation across **Home**, **Services**, and **Support**
+- Consistent use of **Bootstrap 5.3.3** for layout and styling
+
+---
+
+### 🌈 Colour Scheme
+
+The color palette is calm, approachable, and accessible:
+
+| Element            | Color Code   | Purpose                                  |
+|--------------------|--------------|-------------------------------------------|
+| Background         | `#ffffff`    | Clean white for readability               |
+| Primary Buttons    | `#0d6efd`    | Bootstrap primary blue for CTAs           |
+| Text               | `#212529`    | Near-black for optimal contrast           |
+| Navigation Bar     | `#f8f9fa`    | Light gray background (Bootstrap default) |
+| Links (hover)      | `#0056b3`    | Darker blue for hover feedback            |
+
+All colors were tested for accessibility and clarity on light and dark screens.
+
+---
+
+### 📝 Typography
+
+The site uses the default **Bootstrap typography system**, which ensures clean and responsive type sizing across all screen sizes:
+
+- Font Family: **System font stack** for maximum compatibility
+- Heading Sizes: Scalable based on viewport width (`h1` to `h5`)
+- Body Text: Readable at `1rem` base size
+- Alignment: Centered or left-aligned based on context
+
+Readability was prioritized, especially for mobile users viewing pet details and service forms.
+
+---
+
+### 🖼️ Imagery
+
+Images are central to the project’s emotional tone. Photos of pets are displayed in **cards** with soft shadows, rounded corners, and alt text for accessibility.
+
+- 🐶 **Pet Images**: Shown on the homepage and pet detail page to highlight available animals for adoption.
+- 📸 **Service Images**: Will be used to represent grooming, training, and veterinary services.
+- 📂 All images are loaded via `image_url` fields and stored externally for performance.
+- 🎯 Future optimization using tools like **TinyPNG** will improve performance.
+
+> Note: All images are either owned or sourced from open-license repositories like [Unsplash](https://unsplash.com) or [Pexels](https://www.pexels.com). Each image will be properly credited in the README.
+
+---
+
+
+## 🛠️ Technologies Used
+
+PawfectMatch leverages modern, reliable technologies across the front-end and back-end to ensure a responsive and dynamic user experience.
+
+---
+
+### 🌐 Languages
+
+- **HTML5** – For page structure and semantic markup.
+- **CSS3** – For visual styling and responsive layout.
+- **JavaScript (optional)** – For future dynamic frontend behavior.
+- **Python 3.12** – Backend language for Django framework.
+
+---
+
+### 🧰 Frameworks & Libraries
+
+- **Django 5.2** – High-level Python web framework used for building models, views, and forms.
+- **Django Allauth 65.7.0** – Integrated user authentication and registration.
+- **Bootstrap 5.3.3** – CSS framework for responsive design and pre-styled components.
+- **Gunicorn** – WSGI HTTP server used for production deployment.
+- **WhiteNoise** – For efficient static file handling on Heroku.
+
+---
+
+### 🗃️ Databases
+
+- **SQLite3** – Used during local development for simplicity.
+- **PostgreSQL** – Production-grade relational database used on Heroku.
+
+---
+
+### 🧪 Tools & Platforms
+
+- **Visual Studio Code** – Main IDE for writing and editing code.
+- **Git** – Version control for managing changes.
+- **GitHub** – Remote code hosting, issues, and project planning (Agile board).
+- **Heroku** – Hosting platform for live deployment.
+- **Balsamiq** – For wireframe design and UX planning.
+- **DrawSQL / dbdiagram.io** – For creating the ERD (Entity Relationship Diagram).
+- **Chrome DevTools** – For layout debugging, Lighthouse testing, and accessibility checks.
+
+---
+
+### ⚙️ Other Utilities
+
+- **pip** – Python package manager for installing project dependencies.
+- **dotenv / env.py** – Local environment variable management.
+- **Favicon.io** – For generating a custom site favicon.
+- **Font Awesome** – Icon library for interface icons.
+- **TinyPNG** *(planned)* – To optimize and compress uploaded images.
+
+---
+
+### 📦 Python Dependencies
+
+All Python dependencies are listed in the `requirements.txt` file and installed via:
+
+```bash
+pip install -r requirements.txt
+asgiref==3.8.1
+Django==5.2
+django-allauth==65.7.0
+sqlparse==0.5.3
 

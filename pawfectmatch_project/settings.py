@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'services',
     'bookings',
     'support',
+    'adoptions',
 ]
 
 MIDDLEWARE = [
