@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'bookings',
     'support',
     'adoptions',
+    'community',
 
     'crispy_forms',
     'crispy_bootstrap5',
