@@ -24,9 +24,15 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ service.title }}</h5>
                     <p class="card-text">{{ service.description }}</p>
+                    <p class="card-text"><strong>Price:</strong> ${{ service.price }}</p>
+
+                    <!-- ✅ Stripe booking button -->
+                    <a href="{% url 'make_booking' service.id %}" class="btn btn-success mt-2">Book Now</a>
                 </div>
             </div>
         </div>
+        {% empty %}
+        <p class="text-center">No services available at the moment.</p>
         {% endfor %}
     </div>
 </div>
