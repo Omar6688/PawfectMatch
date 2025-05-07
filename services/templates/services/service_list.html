@@ -1,4 +1,5 @@
 {% extends "core/base.html" %}
+{% load static %}
 
 {% block title %}Services | PawfectMatch{% endblock %}
 
@@ -10,23 +11,23 @@
 
 <hr>
 
-<div class="row">
-    {% for service in services %}
-    <div class="col-md-4 mb-4">
-        <div class="card h-100 shadow">
-            {% if service.image_url %}
-            <img src="{{ service.image_url }}" class="card-img-top" alt="{{ service.name }}">
-            {% endif %}
-            <div class="card-body">
-                <h5 class="card-title">{{ service.name }}</h5>
-                <p class="card-text">{{ service.description }}</p>
-                <p class="card-text"><strong>Price:</strong> ${{ service.price }}</p>
-                <a href="{% url 'make_booking' %}" class="btn btn-outline-success mt-2">Book Now</a>
+<div class="container">
+    <div class="row">
+        {% for service in services %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow">
+                {% if service.image %}
+                    <img src="{{ service.image.url }}" class="card-img-top" alt="{{ service.title }}">
+                {% else %}
+                    <img src="{% static 'images/default_service.jpg' %}" class="card-img-top" alt="Default service">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ service.title }}</h5>
+                    <p class="card-text">{{ service.description }}</p>
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% empty %}
-    <p class="text-center">No services available at the moment.</p>
-    {% endfor %}
 </div>
 {% endblock %}
