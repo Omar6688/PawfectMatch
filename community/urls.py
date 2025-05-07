@@ -6,5 +6,6 @@ urlpatterns = [
     path('volunteer/thank-you/', views.volunteer_thank_you, name='volunteer_thank_you'),
     path('donate/', views.donate, name='donate'),
     path('donate/thank-you/', views.donation_thank_you, name='donation_thank_you'),
+    path('donate/checkout/', views.create_checkout_session, name='create_checkout_session'),
     path('share/', views.share, name='share'),
 ]

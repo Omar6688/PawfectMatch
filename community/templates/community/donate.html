@@ -1,15 +1,51 @@
 {% extends "core/base.html" %}
-{% load crispy_forms_tags %}
+{% block title %}Donate to PawfectMatch{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-  <h2 class="text-center mb-4">Donate to PawfectMatch</h2>
-  <p>Your donation helps us feed, house, and care for more animals in need.</p>
-  <p><strong>This is a demo section — no real payments are processed.</strong></p>
-  <form method="POST">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit" class="btn btn-primary">Donate</button>
-  </form>
+<div class="container py-5 text-center">
+    <h2>Donate to PawfectMatch</h2>
+    <p>Select an amount to donate and support our mission:</p>
+
+    <!-- ✅ UPDATED BUTTONS WITH data-amount -->
+    <div class="btn-group my-4" role="group">
+        <button class="btn btn-outline-primary" data-amount="1000">Donate $10</button>
+        <button class="btn btn-outline-success" data-amount="2500">Donate $25</button>
+        <button class="btn btn-outline-danger" data-amount="5000">Donate $50</button>
+    </div>
 </div>
+
+<!-- ✅ STRIPE JS LOGIC -->
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const stripe = Stripe("{{ stripe_public_key }}");
+
+        function startCheckout(amount) {
+            fetch("{% url 'create_checkout_session' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}",
+                },
+                body: JSON.stringify({ amount: amount })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.id) {
+                    stripe.redirectToCheckout({ sessionId: data.id });
+                } else {
+                    alert("Stripe error: " + data.error);
+                }
+            });
+        }
+
+        // ✅ Attach event listeners to all buttons
+        document.querySelectorAll("button[data-amount]").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const amount = btn.getAttribute("data-amount");
+                startCheckout(parseInt(amount));
+            });
+        });
+    });
+</script>
 {% endblock %}
