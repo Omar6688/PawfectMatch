@@ -3,18 +3,20 @@
 
 {% block content %}
 <div class="container py-5 text-center">
-    <h2>Donate to PawfectMatch</h2>
-    <p>Select an amount to donate and support our mission:</p>
+    <h2 class="mb-3">Donate to PawfectMatch 🐾</h2>
+    <p class="lead">Your support helps us rescue, shelter, and care for more animals in need.</p>
 
-    <!-- ✅ UPDATED BUTTONS WITH data-amount -->
-    <div class="btn-group my-4" role="group">
-        <button class="btn btn-outline-primary" data-amount="1000">Donate $10</button>
-        <button class="btn btn-outline-success" data-amount="2500">Donate $25</button>
-        <button class="btn btn-outline-danger" data-amount="5000">Donate $50</button>
+    <!-- Styled Donation Buttons -->
+    <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+        <button class="btn btn-lg btn-outline-primary shadow-sm px-4" data-amount="1000">$10</button>
+        <button class="btn btn-lg btn-outline-success shadow-sm px-4" data-amount="2500">$25</button>
+        <button class="btn btn-lg btn-outline-danger shadow-sm px-4" data-amount="5000">$50</button>
     </div>
+
+    <p class="mt-4 text-muted">All payments are secure and handled by Stripe in test mode.</p>
 </div>
 
-<!-- ✅ STRIPE JS LOGIC -->
+<!-- Stripe Script -->
 <script src="https://js.stripe.com/v3/"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -39,7 +41,6 @@
             });
         }
 
-        // ✅ Attach event listeners to all buttons
         document.querySelectorAll("button[data-amount]").forEach(btn => {
             btn.addEventListener("click", () => {
                 const amount = btn.getAttribute("data-amount");
