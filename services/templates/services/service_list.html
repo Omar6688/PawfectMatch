@@ -26,8 +26,8 @@
                     <p class="card-text">{{ service.description }}</p>
                     <p class="card-text"><strong>Price:</strong> ${{ service.price }}</p>
 
-                    <!-- ✅ Stripe booking button -->
-                    <a href="{% url 'make_booking' service.id %}" class="btn btn-success mt-2">Book Now</a>
+                    <a href="{% url 'book_service' service.id %}" class="btn btn-success mt-2">Book Now</a>
+
                 </div>
             </div>
         </div>
