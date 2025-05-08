@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-for-dev-only')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['pawfectmatch-ok.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['pawfectmatch-ok-c783577133e6.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
