@@ -1,6 +1,4 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.decorators.csrf import csrf_exempt
-from django.contrib import messages
 from django.conf import settings
 from .forms import BookingForm
 from .models import Booking
@@ -8,7 +6,6 @@ from services.models import Service
 import stripe
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
-
 
 def book_service(request, service_id):
     service = get_object_or_404(Service, pk=service_id)
@@ -18,13 +15,11 @@ def book_service(request, service_id):
         if form.is_valid():
             booking = form.save()
 
-            # ✅ Store ONE clean message in session
-            request.session['booking_success_message'] = (
-                f"✅ Booking for {booking.service.name} on {booking.date} confirmed. "
-                "💳 Payment received successfully. Thank you!"
-            )
+            # Store both messages in session
+            request.session['booking_message'] = f"📅 Booking confirmed for {booking.service.name} on {booking.date} has been confirmed."
+            request.session['payment_message'] = "🎉 Payment received successfully. Thank you for trusting PawfectMatch with your pet care needs! 🐾"
 
-            # Stripe Checkout session
+            # Stripe checkout
             session = stripe.checkout.Session.create(
                 payment_method_types=['card'],
                 line_items=[{
@@ -43,6 +38,7 @@ def book_service(request, service_id):
             )
 
             return redirect(session.url)
+
     else:
         form = BookingForm(initial={'service': service})
 
@@ -50,8 +46,10 @@ def book_service(request, service_id):
 
 
 def booking_success(request):
-    # ✅ Show and clear one clean message from session
-    message = request.session.pop('booking_success_message', None)
+    booking_message = request.session.pop('booking_message', None)
+    payment_message = request.session.pop('payment_message', None)
+
     return render(request, 'bookings/booking_success.html', {
-        'booking_success_message': message
+        'booking_message': booking_message,
+        'payment_message': payment_message,
     })

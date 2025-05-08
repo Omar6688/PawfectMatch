@@ -3,9 +3,22 @@
 
 {% block content %}
 <div class="container py-5 text-center" style="min-height: 60vh;">
-    {% if booking_success_message %}
-        <h2 class="text-success">{{ booking_success_message }}</h2>
+
+    {% if booking_message %}
+        <p class="fs-4 fw-semibold text-success mb-4">{{ booking_message }}</p>
     {% endif %}
-    <a href="{% url 'service_list' %}" class="btn btn-primary mt-4">← Back to Services</a>
+
+    {% if payment_message %}
+        <p class="fs-4 fw-semibold text-primary">{{ payment_message }}</p>
+    {% endif %}
+
+    <a href="{% url 'service_list' %}" class="btn btn-outline-dark mt-4">← Back to Services</a>
+
+    <div class="text-center mt-5">
+        <p class="fw-light text-muted">
+            Thank you for choosing <strong>PawfectMatch</strong> – we can’t wait to pamper your pet! 🐶
+        </p>
+    </div>
+
 </div>
 {% endblock %}
