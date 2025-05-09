@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG") == "True"
+DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = ['pawfectmatch-ok-c783577133e6.herokuapp.com', 'localhost', '127.0.0.1']
 
@@ -119,7 +119,8 @@ WSGI_APPLICATION = 'pawfectmatch_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-if os.environ.get("DEVELOPMENT") == "True":
+# Use SQLite locally, Postgres on Heroku
+if os.getenv("DEVELOPMENT") == "True":
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -127,9 +128,14 @@ if os.environ.get("DEVELOPMENT") == "True":
         }
     }
 else:
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-    }
+    db_url = os.getenv("DATABASE_URL")
+    if db_url:
+        DATABASES = {
+            'default': dj_database_url.parse(db_url)
+        }
+    else:
+        raise ValueError("DATABASE_URL not set for production environment")
+
 
 
 # Password validation
