@@ -179,7 +179,11 @@ STATICFILES_DIRS = [
 ]
 
 
-# AWS S3 MEDIA STORAGE SETUP
+# Local development fallback (always define)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# AWS S3 MEDIA STORAGE SETUP (overrides MEDIA_URL)
 if os.getenv('USE_AWS') == 'True':
     AWS_STORAGE_BUCKET_NAME = 'pawfectmatch-media'
     AWS_S3_REGION_NAME = 'eu-north-1'
@@ -190,11 +194,6 @@ if os.getenv('USE_AWS') == 'True':
     # MEDIA file storage only
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
-
-# Fallback for local development
-else:
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Stripe
