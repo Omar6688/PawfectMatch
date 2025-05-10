@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'support',
     'adoptions',
     'community',
+    'storages',
 
     'crispy_forms',
     'crispy_bootstrap5',
