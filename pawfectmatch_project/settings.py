@@ -16,6 +16,9 @@ import dj_database_url
 
 from dotenv import load_dotenv
 load_dotenv()
+print("RAW USE_AWS:", os.getenv('USE_AWS'))
+print("RAW DEVELOPMENT:", os.getenv('DEVELOPMENT'))  # Confirm it's True
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
