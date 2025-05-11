@@ -188,9 +188,14 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # AWS S3 MEDIA STORAGE SETUP (overrides MEDIA_URL)
+# Local development fallback (always define first)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# AWS S3 MEDIA STORAGE SETUP (overrides MEDIA_URL)
 if os.getenv('USE_AWS') == 'True':
-    AWS_STORAGE_BUCKET_NAME = 'pawfectmatch-media'
-    AWS_S3_REGION_NAME = 'eu-north-1'
+    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
