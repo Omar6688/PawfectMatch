@@ -1,1 +1,1 @@
-web: gunicorn pawfectmatch_project.wsgi
+gunicorn pawfectmatch_project.wsgi:application
