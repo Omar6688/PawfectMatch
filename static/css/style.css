@@ -1,0 +1,44 @@
+/* Reset spacing */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+/* Navbar brand logo */
+.navbar-brand {
+    font-weight: bold;
+    color: #004085;
+}
+
+/* Responsive card titles */
+.card-title {
+    font-size: 1.25rem;
+    color: #333;
+}
+
+/* Center the homepage intro */
+.hero-section {
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Footer */
+footer {
+    background-color: #e9ecef;
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .info-box h3 {
+        font-size: 1.2rem;
+    }
+}
