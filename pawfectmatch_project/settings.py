@@ -198,11 +198,11 @@ if os.getenv('USE_AWS') == 'True':
     AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
     AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
+        'CacheControl': 'max-age=86400',
+    }
 
     # Static and media files
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
