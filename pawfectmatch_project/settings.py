@@ -182,17 +182,12 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-
-# Local development fallback (always define)
+# Local development fallback for media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# AWS S3 MEDIA STORAGE SETUP (overrides MEDIA_URL)
-# Local development fallback (always define first)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
 
-# AWS S3 MEDIA STORAGE SETUP (overrides MEDIA_URL)
+# AWS S3 STATIC & MEDIA STORAGE (Django 5.2+)
 if os.getenv('USE_AWS') == 'True':
     AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
     AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
@@ -204,13 +199,18 @@ if os.getenv('USE_AWS') == 'True':
         'CacheControl': 'max-age=86400',
     }
 
-    # Static and media files
-    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
     STATICFILES_LOCATION = 'static'
-    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
     MEDIAFILES_LOCATION = 'media'
 
-    # Override static and media URLs in production
+    STORAGES = {
+        "default": {
+            "BACKEND": "custom_storages.MediaStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "custom_storages.StaticStorage",
+        },
+    }
+
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
