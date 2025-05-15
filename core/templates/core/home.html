@@ -1,4 +1,5 @@
 {% extends "core/base.html" %}
+{% load static %}
 
 {% block title %}Home | PawfectMatch{% endblock %}
 
@@ -41,13 +42,17 @@
     {% for pet in pets %}
     <div class="col-md-4 mb-4">
         <div class="card h-100 shadow">
-            <img src="{{ pet.image_url }}" class="card-img-top" alt="{{ pet.name }}">
+            {% if pet.image %}
+                <img src="{{ pet.image.url }}" class="card-img-top" alt="{{ pet.name }}">
+            {% else %}
+                <img src="{% static 'images/default_pet.jpg' %}" class="card-img-top" alt="Default pet image">
+            {% endif %}
             <div class="card-body">
                 <h5 class="card-title">{{ pet.name }}</h5>
                 <p class="card-text"><strong>Breed:</strong> {{ pet.breed }}</p>
                 <p class="card-text"><strong>Age:</strong> {{ pet.age }} years</p>
                 <p class="card-text">{{ pet.description }}</p>
-                <a href="{% url 'pet_detail' pet.pk %}" class="btn btn-outline-primary mt-2">View Details</a>
+                <a href="{% url 'adoptable_detail' pet.pk %}" class="btn btn-outline-primary mt-2">View Details</a>
             </div>
         </div>
     </div>

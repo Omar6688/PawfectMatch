@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from adoptions.models import AdoptablePet
 
 def home(request):
-    return render(request, 'core/home.html')
+    pets = AdoptablePet.objects.all()
+    return render(request, 'core/home.html', {'pets': pets})
