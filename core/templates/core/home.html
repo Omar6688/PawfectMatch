@@ -6,7 +6,9 @@
 <div class="text-center py-5">
     <h1 class="display-4">Welcome to PawfectMatch 🐾</h1>
     <p class="lead">Find your forever pet or book trusted pet services</p>
-    <a href="#" class="btn btn-primary btn-lg mt-3">View Available Pets</a>
+    <a href="{% url 'adoptable_list' %}" class="btn btn-success btn-lg mt-3">
+        🐾 Meet Adoptable Pets
+    </a>
 </div>
 
 <hr>
@@ -14,7 +16,7 @@
 <div class="row text-center py-4">
     <div class="col-md-4">
         <a href="{% url 'adoptable_list' %}" class="info-box text-decoration-none text-dark">
-            <h3>Adopt</h3>
+            <h3>Adoptable Pets</h3>
             <p>Connect with animals in need of a loving home.</p>
         </a>    
     </div>
@@ -34,7 +36,7 @@
 
 <hr>
 
-<h2 class="text-center my-4">Available Pets</h2>
+<h2 class="text-center my-4">Meet Our Adoptable Pets 🐾</h2>
 <div class="row">
     {% for pet in pets %}
     <div class="col-md-4 mb-4">
@@ -50,7 +52,9 @@
         </div>
     </div>
     {% empty %}
-    <p class="text-center">No pets available at the moment.</p>
+    <p class="text-center text-muted fs-5 fst-italic mt-3">
+        🐾 No adoptable pets right now — check back soon!
+    </p>    
     {% endfor %}
 </div>
 {% endblock %}
