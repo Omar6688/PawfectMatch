@@ -1,13 +1,39 @@
 {% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Share | PawfectMatch{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-  <h2 class="text-center mb-4">Share PawfectMatch</h2>
-  <p>Spread the word on social media and help more pets find loving homes.</p>
-  <p>
-    <a class="btn btn-primary me-2" href="https://twitter.com/intent/tweet?text=Check+out+PawfectMatch!">Share on Twitter</a>
-    <a class="btn btn-success me-2" href="https://www.facebook.com/sharer/sharer.php?u=https://pawfectmatch.herokuapp.com">Share on Facebook</a>
-    <a class="btn btn-secondary" href="mailto:?subject=Support%20PawfectMatch&body=Check%20out%20this%20amazing%20pet%20support%20site!">Share via Email</a>
-  </p>
+<div class="container py-5 text-center">
+  <h2 class="mb-4">Help Us Spread the Word 🐾</h2>
+  <p class="mb-4">Share PawfectMatch with your friends and family — every share brings a pet closer to a loving home!</p>
+
+  <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3">
+    <!-- Instagram -->
+    <a class="btn d-flex align-items-center gap-2"
+       style="background-color: #E1306C; color: white;"
+       href="https://www.instagram.com/"
+       target="_blank" rel="noopener noreferrer">
+      <img src="{% static 'images/icons/instagram.svg' %}" alt="Instagram" width="20">
+      Instagram
+    </a>
+
+    <!-- Facebook -->
+    <a class="btn d-flex align-items-center gap-2"
+       style="background-color: #3b5998; color: white;"
+       href="https://www.facebook.com/sharer/sharer.php?u=https://pawfectmatch.herokuapp.com"
+       target="_blank" rel="noopener noreferrer">
+      <img src="{% static 'images/icons/facebook.svg' %}" alt="Facebook" width="20">
+      Facebook
+    </a>
+
+    <!-- Email -->
+    <a class="btn btn-secondary d-flex align-items-center gap-2"
+       href="mailto:?subject=Check out PawfectMatch!&body=Adopt pets and support shelters at https://pawfectmatch.herokuapp.com"
+       target="_blank" rel="noopener noreferrer">
+      <img src="{% static 'images/icons/email.svg' %}" alt="Email" width="20">
+      Email
+    </a>
+  </div>
 </div>
 {% endblock %}
