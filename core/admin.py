@@ -1,4 +1,3 @@
-from django.contrib import admin
-from .models import Pet
+# core/admin.py
 
-admin.site.register(Pet)
+# No models registered in core admin currently
