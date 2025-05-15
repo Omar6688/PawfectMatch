@@ -2,23 +2,35 @@
 {% block title %}Booking Complete | PawfectMatch{% endblock %}
 
 {% block content %}
-<div class="container py-5 text-center" style="min-height: 60vh;">
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 p-4 text-center">
+                <div class="card-body">
 
-    {% if booking_message %}
-        <p class="fs-4 fw-semibold text-success mb-4">{{ booking_message }}</p>
-    {% endif %}
+                    {% if booking_message %}
+                        <p class="fs-5 fw-medium text-success mb-3">
+                            {{ booking_message }}
+                        </p>
+                    {% endif %}
 
-    {% if payment_message %}
-        <p class="fs-4 fw-semibold text-primary">{{ payment_message }}</p>
-    {% endif %}
+                    {% if payment_message %}
+                        <p class="fs-5 fw-medium text-primary mb-4">
+                            {{ payment_message }}
+                        </p>
+                    {% endif %}
 
-    <a href="{% url 'service_list' %}" class="btn btn-outline-dark mt-4">← Back to Services</a>
+                    <a href="{% url 'service_list' %}" class="btn btn-outline-primary btn-lg mb-4">
+                        ← Back to Services
+                    </a>
 
-    <div class="text-center mt-5">
-        <p class="fw-light text-muted">
-            Thank you for choosing <strong>PawfectMatch</strong> – we can’t wait to pamper your pet! 🐶
-        </p>
+                    <p class="fs-6 text-muted mb-0">
+                        Thank you for choosing <strong>PawfectMatch</strong> – we can’t wait to pamper your pet! 🐶
+                    </p>
+
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>
 {% endblock %}
