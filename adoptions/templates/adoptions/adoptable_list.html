@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ pet.name }}</h5>
                     <p class="card-text"><strong>Breed:</strong> {{ pet.breed }}</p>
-                    <p class="card-text"><strong>Age:</strong> {{ pet.age }} years</p>
+                    <p class="card-text"><strong>Age:</strong> {{ pet.age }} year{% if pet.age != 1 %}s{% endif %}</p>
                     <a href="{% url 'adoptable_detail' pet.pk %}" class="btn btn-outline-primary">View Details</a>
                 </div>
             </div>

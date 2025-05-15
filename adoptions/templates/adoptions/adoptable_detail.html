@@ -19,7 +19,7 @@
             <h4 class="mt-3">Pet Information</h4>
 
             <p><strong>Breed:</strong> {{ pet.breed }}</p>
-            <p><strong>Age:</strong> {{ pet.age }} years</p>
+            <p><strong>Age:</strong> {{ pet.age }} year{% if pet.age != 1 %}s{% endif %}</p>
             <p>{{ pet.description }}</p>
 
             <a href="{% url 'adoptable_list' %}" class="btn btn-secondary mt-3">← Back to List</a>

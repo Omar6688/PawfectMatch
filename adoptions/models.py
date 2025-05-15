@@ -5,7 +5,7 @@ class AdoptablePet(models.Model):
     age = models.IntegerField()
     breed = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.ImageField(upload_to='pets/', blank=True, null=True)  # ⬅️ This handles uploads
+    image = models.ImageField(upload_to='pets/', blank=True, null=True)
 
     def __str__(self):
         return self.name
