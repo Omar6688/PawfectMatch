@@ -497,6 +497,45 @@ PawfectMatch leverages modern, reliable technologies across the front-end and ba
 
 ---
 
+## 🛠️ Agile Planning
+
+This project was developed using the Agile methodology and GitHub Projects (Kanban board) to manage tasks and user stories effectively.
+
+A total of **17 user stories** were written, grouped under **4 Epics**:
+
+### 📁 Epics & User Story Themes
+
+| Epic                          | Description                                                                 |
+|-------------------------------|-----------------------------------------------------------------------------|
+| **User Accounts & Authentication** | Registration, login/logout, profile access, email confirmation             |
+| **Adoption Workflow**         | Browse pets, add/delete listings (admin), adopt flow                        |
+| **Pet Services & Bookings**   | View services, book, pay via Stripe, see bookings                           |
+| **Support & Community Sharing** | Volunteer info, social sharing, confirmations, and custom error handling |
+
+Each story was created using GitHub Issues with a markdown-based user story template and included clear, testable **acceptance criteria** (3–5 per story).
+
+---
+
+### 📌 Agile Board Structure
+
+The GitHub Project board followed a classic **Kanban** format with three main columns:
+
+- **To Do** – All planned user stories
+- **In Progress** – Tasks currently being developed
+- **Done** – Completed and verified user stories
+
+Issues were regularly updated and moved between columns throughout development to reflect real progress.
+
+---
+
+### 📷 Agile Board Screenshot
+
+![Agile board showing user stories organized in To Do, In Progress, and Done](documentation/agile-board.png)
+
+> 📝 *Be sure to update the image path above to match your actual screenshot filename and folder (e.g., `assets/images/agile-board.png` if you're storing it there).*
+
+
+
 ### 🌐 Languages
 
 - **HTML5** – For page structure and semantic markup.
