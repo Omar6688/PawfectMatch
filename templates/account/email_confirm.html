@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="card shadow-lg p-4">
+    <h2 class="mb-3 text-center text-primary">{% trans "Verify Your Email Address" %}</h2>
+    <p class="text-center">
+      {% trans "We have sent a confirmation email to" %} <strong>{{ confirmation.email_address.email }}</strong>.
+    </p>
+    <p class="text-center">
+      {% trans "Please follow the link in the email to complete your signup." %}
+    </p>
+    <p class="text-center">
+      {% trans "Didn't receive the email?" %}<br>
+      {% trans "Check your spam folder or" %}
+      <a href="{% url 'account_resend_confirmation' %}" class="btn btn-outline-primary btn-sm mt-2">
+        {% trans "resend the confirmation email" %}
+      </a>
+    </p>
+  </div>
+</div>
+{% endblock %}
