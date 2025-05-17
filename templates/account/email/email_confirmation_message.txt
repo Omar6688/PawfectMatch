@@ -1,0 +1,12 @@
+Hi {{ user.username }},
+
+Please confirm your email address by clicking the link below:
+
+{{ activate_url }}
+
+This link will expire in {{ expiration_days }} day(s).
+
+If you did not create this account, please ignore this message.
+
+Thanks,  
+PawfectMatch Team
