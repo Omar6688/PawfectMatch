@@ -34,6 +34,9 @@
                             <span class="nav-link">Hi, {{ user.username }} 👋</span>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{% url 'profile' %}">My Profile</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                         </li>
                     {% else %}
