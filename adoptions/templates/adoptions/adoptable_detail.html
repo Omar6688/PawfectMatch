@@ -32,6 +32,10 @@
             </div>
             {% endif %}
 
+            {% if user.is_authenticated and not user.is_staff %}
+                <a href="{% url 'express_interest' pet.pk %}" class="btn btn-primary mt-4">🐾 Adopt this Pet</a>
+            {% endif %}
+
             <div class="mt-4">
                 <a href="{% url 'adoptable_list' %}" class="btn btn-outline-secondary">← Back to List</a>
             </div>

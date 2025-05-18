@@ -7,4 +7,5 @@ urlpatterns = [
     path('add/', views.add_pet, name='add_pet'),
     path('edit/<int:pk>/', views.edit_pet, name='edit_pet'),
     path('delete/<int:pk>/', views.delete_pet, name='delete_pet'),
+    path('interest/<int:pk>/', views.express_interest, name='express_interest'),
 ]

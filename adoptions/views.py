@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import AdoptablePet
 from django.contrib.admin.views.decorators import staff_member_required
 from .forms import AdoptablePetForm
+from .forms import AdoptionInterestForm
 
 
 def adoptable_list(request):
@@ -42,3 +43,22 @@ def delete_pet(request, pk):
         pet.delete()
         return redirect('adoptable_list')
     return render(request, 'adoptions/adoptable_confirm_delete.html', {'pet': pet})
+
+def express_interest(request, pk):
+    pet = get_object_or_404(AdoptablePet, pk=pk)
+
+    if request.method == 'POST':
+        form = AdoptionInterestForm(request.POST)
+        if form.is_valid():
+            interest = form.save(commit=False)
+            interest.pet = pet
+            interest.save()
+            return render(request, 'adoptions/interest_success.html', {'pet': pet})
+    else:
+        form = AdoptionInterestForm()
+
+    return render(request, 'adoptions/express_interest.html', {
+        'form': form,
+        'pet': pet
+    })
+

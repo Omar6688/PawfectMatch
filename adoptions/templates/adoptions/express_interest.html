@@ -1,0 +1,17 @@
+{% extends "core/base.html" %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center mb-4">Adopt {{ pet.name }}</h2>
+    <div class="card shadow p-4 mx-auto" style="max-width: 600px;">
+        <p>Interested in adopting <strong>{{ pet.name }}</strong>? Please fill out the form below and we’ll contact you soon!</p>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Submit Interest</button>
+                <a href="{% url 'adoptable_detail' pet.pk %}" class="btn btn-outline-secondary ms-2">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

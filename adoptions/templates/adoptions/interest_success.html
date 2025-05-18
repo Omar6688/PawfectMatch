@@ -1,0 +1,9 @@
+{% extends "core/base.html" %}
+{% block content %}
+<div class="container py-5 text-center">
+    <h2>Thank You! 🐾</h2>
+    <p>Your interest in <strong>{{ pet.name }}</strong> has been received.</p>
+    <p>We'll be in touch shortly with more details.</p>
+    <a href="{% url 'adoptable_list' %}" class="btn btn-primary mt-3">Back to Adoptable Pets</a>
+</div>
+{% endblock %}
