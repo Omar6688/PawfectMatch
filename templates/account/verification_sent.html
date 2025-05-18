@@ -1,0 +1,16 @@
+{% extends "core/base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="card shadow-lg p-4">
+    <h2 class="mb-3 text-center text-success">{% trans "Check Your Email" %}</h2>
+    <p class="text-center">
+      {% trans "A confirmation email has been sent to your registered address." %}
+    </p>
+    <p class="text-center">
+      {% trans "Click the link in that email to complete your signup." %}
+    </p>
+  </div>
+</div>
+{% endblock %}
