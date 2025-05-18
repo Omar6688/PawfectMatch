@@ -5,6 +5,13 @@
 
 {% block content %}
 <h2 class="text-center my-4">Meet Our Adoptable Pets 🐾</h2>
+
+{% if user.is_staff %}
+    <div class="text-end mb-3">
+        <a href="{% url 'add_pet' %}" class="btn btn-primary">➕ Add New Pet</a>
+    </div>
+{% endif %}
+
 <div class="container">
     <div class="row">
         {% for pet in pets %}
@@ -20,6 +27,14 @@
                     <p class="card-text"><strong>Breed:</strong> {{ pet.breed }}</p>
                     <p class="card-text"><strong>Age:</strong> {{ pet.age }} year{% if pet.age != 1 %}s{% endif %}</p>
                     <a href="{% url 'adoptable_detail' pet.pk %}" class="btn btn-outline-primary">View Details</a>
+
+                    {% if user.is_staff %}
+                        <div class="mt-2 d-flex gap-2">
+                            <a href="{% url 'edit_pet' pet.pk %}" class="btn btn-sm btn-success">Edit</a>
+                            <a href="{% url 'delete_pet' pet.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
+                    {% endif %}
+        
                 </div>
             </div>
         </div>
