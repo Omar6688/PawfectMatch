@@ -3,6 +3,7 @@ from django.conf import settings
 from .forms import BookingForm
 from .models import Booking
 from services.models import Service
+from django.contrib.auth.decorators import login_required 
 import stripe
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -53,3 +54,10 @@ def booking_success(request):
         'booking_message': booking_message,
         'payment_message': payment_message,
     })
+
+# ✅ NEW: View for displaying user's bookings
+@login_required
+def view_bookings(request):
+    """Display the current user's bookings."""
+    bookings = Booking.objects.filter(email=request.user.email)  # Use email or FK if exists
+    return render(request, 'bookings/view_bookings.html', {'bookings': bookings})
