@@ -172,47 +172,89 @@ Screenshots of mobile and tablet views will be added below.
 
 ### ✅ Accessibility (Lighthouse)
 
-Using Google Chrome DevTools > Lighthouse, accessibility audits were performed on the home page, adoptable pets page, and booking page.
+Lighthouse accessibility audits were run on **Home**, **Services**, and **Adoptable Pets** pages using Chrome DevTools. All scored excellent results, confirming the project is accessible to most users.
 
 | Page                | Accessibility Score | Notes                                     |
 |---------------------|---------------------|-------------------------------------------|
-| Home                | ✅ 100%             | Good heading structure, contrast OK       |
-| Adoptable Pets      | ✅ 100%             | Alt text on all pet images                |
-| Booking Form        | ✅ 100%             | Labels match inputs, keyboard-navigable  |
+| Home                | ✅ 98%             | Correct structure, keyboard-friendly      |
+| Services            | ✅ 98%             | Forms labeled, clean structure            |
+| Adoptable Pets      | ✅ 98%             | All pet images include alt text           |
 
-All pages include:
-
-- ✅ Semantic HTML (e.g., `<header>`, `<main>`, `<footer>`)
-- ✅ Proper color contrast
-- ✅ Keyboard navigation support
-- ✅ Alt text on all images
-- ✅ Form fields with labels
+Accessibility was verified using:
+- ✅ Chrome Lighthouse
+- ✅ axe DevTools browser extension
+- ✅ Manual keyboard-only navigation
+- ✅ VoiceOver screen reader (macOS)
 
 ---
 
 ### ⚡ Performance (Lighthouse)
 
-Performance audits using Lighthouse also showed solid results:
-
-| Page                | Performance Score | Notes                             |
-|---------------------|------------------|-----------------------------------|
-| Home                | ✅ 96–100%       | Fast load with minimal blocking   |
-| Adoptable Pets      | ✅ 95–98%        | Lazy loading optimized images     |
-| Booking Form        | ✅ 95–99%        | Lightweight form with fast render |
-
-Static files (CSS/JS) are served efficiently via **WhiteNoise** on Heroku.
+Lighthouse audits were conducted in both **mobile** and **desktop** modes. Performance was slightly lower on mobile due to large image sizes and loading time (especially **Largest Contentful Paint** issues).
 
 ---
 
-### 🧪 Tools Used
+#### 🏠 Home Page
 
-- ✅ Chrome Lighthouse
-- ✅ axe DevTools (accessibility extension)
-- ✅ Manual keyboard-only navigation
-- ✅ Screen reader test (VoiceOver on macOS)
+| Mode     | Score | Notes                       |
+|----------|-------|-----------------------------|
+| Mobile   | 86%   | LCP slightly delayed        |
+| Desktop  | 98%   | Excellent speed and layout  |
 
-Screenshots will be added below.
+**Screenshots**  
+![Lighthouse - Home Mobile](documentation/testing/lighthouse-home-mobile.png)  
+![Lighthouse - Home Desktop](documentation/testing/lighthouse-home-desktop.png)
 
+---
+
+#### 🐶 Adoptable Pets Page
+
+| Mode     | Score | Notes                              |
+|----------|-------|------------------------------------|
+| Mobile   | 68%   | High layout shift and slow LCP     |
+| Desktop  | 82%   | Acceptable; faster than mobile     |
+
+**Screenshots**  
+![Lighthouse - Adopt Mobile](documentation/testing/lighthouse-adopt-mobile.png)  
+![Lighthouse - Adopt Desktop](documentation/testing/lighthouse-adopt-desktop.png)
+
+---
+
+#### 💅 Services Page
+
+| Mode     | Score | Notes                                  |
+|----------|-------|----------------------------------------|
+| Mobile   | 74%   | LCP: Image-heavy section loads slowly  |
+| Desktop  | 88%   | Fast paint time and excellent SEO      |
+
+**Screenshots**  
+![Lighthouse - Services Mobile](documentation/testing/lighthouse-services-mobile.png)  
+![Lighthouse - Services Desktop](documentation/testing/lighthouse-services-desktop.png)
+
+---
+
+### 📝 Performance Summary
+
+- Static files served by **WhiteNoise**
+- Minor performance drops on mobile due to:
+  - ❗ Large pet images not compressed or lazy-loaded
+  - ❗ Largest Contentful Paint delays (notably on image-heavy pages)
+- No blocking scripts or rendering issues found
+
+---
+
+### ✅ Improvement Opportunities (Post-submission)
+
+- 🔧 Implement [image compression](https://tinypng.com/)
+- 🔧 Enable `loading="lazy"` on `<img>` elements
+- 🔧 Consider reducing initial image payload on mobile
+- 🔧 Break long listings into paginated views
+
+---
+
+### 📋 Final Verdict
+
+Accessibility, SEO, and best practices all score 90–100%. Performance is strong on desktop and good enough on mobile for Code Institute submission (60+ is considered acceptable). Issues identified do not break the experience and are logged in [Known Issues](#known-issues).
 
 
 ## ✅ Validation Testing
