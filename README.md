@@ -1,4 +1,5 @@
 # PawfectMatch
+
 🐾 **PawfectMatch**  
 PawfectMatch is a pet adoption and service booking platform built with Django. It allows users to browse adoptable pets, book professional pet services, and support local animal shelters. The platform combines clean UX, secure user accounts, and a modular backend to serve multiple real-world needs in one responsive web app.
 
@@ -11,8 +12,7 @@ PawfectMatch was inspired by the growing demand for unified platforms that help 
 
 🔗 The live site will be available here: **[Live Site - PawfectMatch](#)**
 
-🖼️ *Wireframes will be added below once finalized.*
-
+🖼️ _Wireframes will be added below once finalized._
 
 ---
 
@@ -42,8 +42,6 @@ PawfectMatch was inspired by the growing demand for unified platforms that help 
 - [Deployment](#deployment)
 - [Credits](#credits)
 
-
-
 ## 💡 User Experience Design
 
 ### 🧭 The Strategy Plane
@@ -72,8 +70,6 @@ The app supports the goals of both users and the platform owner (the shelter/ser
 
 The platform is optimized for desktop, tablet, and mobile users, ensuring accessibility on all devices.
 
-
-
 #### 📋 User Stories
 
 Below are the primary user stories that guided the development of PawfectMatch. Each includes clear Acceptance Criteria to define completion.
@@ -81,170 +77,182 @@ Below are the primary user stories that guided the development of PawfectMatch. 
 ---
 
 **👤 Story 1: Site Visitor – View Available Pets**  
-*As a potential adopter,*  
+_As a potential adopter,_  
 I want to browse available pets with their details  
 So that I can find a pet that suits my lifestyle.
 
-✅ **Acceptance Criteria**:  
-- I can view a list of pets with images, breed, and description.  
+✅ **Acceptance Criteria**:
+
+- I can view a list of pets with images, breed, and description.
 - I can click to view more details about each pet.
 
 ---
 
 **👤 Story 2: Site Visitor – Learn About Pet Services**  
-*As a pet owner,*  
+_As a pet owner,_  
 I want to view pet services offered  
 So that I can decide which service I need.
 
-✅ **Acceptance Criteria**:  
-- I can see a list of services with titles and descriptions.  
+✅ **Acceptance Criteria**:
+
+- I can see a list of services with titles and descriptions.
 - I can learn what each service offers before booking.
 
 ---
 
 **👤 Story 3: New User – Register an Account**  
-*As a new user,*  
+_As a new user,_  
 I want to create an account  
 So that I can book services or apply to adopt a pet.
 
-✅ **Acceptance Criteria**:  
-- I can register with a username, email, and password.  
+✅ **Acceptance Criteria**:
+
+- I can register with a username, email, and password.
 - I am redirected and logged in after signing up.
 
 ---
 
 **👤 Story 4: Registered User – Book a Pet Service**  
-*As a logged-in user,*  
+_As a logged-in user,_  
 I want to book a grooming or veterinary service  
 So that I can schedule care for my pet.
 
-✅ **Acceptance Criteria**:  
-- I can select a service, choose a date, and leave a note.  
+✅ **Acceptance Criteria**:
+
+- I can select a service, choose a date, and leave a note.
 - I receive confirmation of my booking.
 
 ---
 
 **👤 Story 5: Supporter – Learn How to Help**  
-*As a community member,*  
+_As a community member,_  
 I want to see how I can support shelters  
 So that I can volunteer or donate.
 
-✅ **Acceptance Criteria**:  
-- I can access a Support page from the navigation.  
+✅ **Acceptance Criteria**:
+
+- I can access a Support page from the navigation.
 - I see information on donations and volunteering.
 
 ---
 
 **👤 Story 6: Admin – Manage Pets and Bookings**  
-*As an admin or staff member,*  
+_As an admin or staff member,_  
 I want to manage pets and bookings through the admin panel  
 So that I can keep listings and appointments updated.
 
-✅ **Acceptance Criteria**:  
-- I can log into the Django admin.  
-- I can add/edit/delete pets, services, and bookings.
+✅ **Acceptance Criteria**:
 
+- I can log into the Django admin.
+- I can add/edit/delete pets, services, and bookings.
 
 ---
 
 **👤 Story 7: Logged-in User – View My Bookings**  
-*As a logged-in user,*  
+_As a logged-in user,_  
 I want to see all my upcoming bookings  
 So that I can manage or cancel them if needed.
 
-✅ **Acceptance Criteria**:  
-- I can see a list of all bookings I’ve made.  
+✅ **Acceptance Criteria**:
+
+- I can see a list of all bookings I’ve made.
 - Each booking includes the service name and date.
 
 ---
 
 **👤 Story 8: Logged-in User – Cancel a Booking**  
-*As a user with a booking,*  
+_As a user with a booking,_  
 I want to cancel it before the scheduled time  
 So that I avoid charges or rescheduling issues.
 
-✅ **Acceptance Criteria**:  
-- I see a “Cancel” option next to my future bookings.  
+✅ **Acceptance Criteria**:
+
+- I see a “Cancel” option next to my future bookings.
 - Cancelled bookings are removed or marked clearly.
 
 ---
 
 **👤 Story 9: Logged-in User – Edit Account Details**  
-*As a registered user,*  
+_As a registered user,_  
 I want to update my profile details  
 So that I can keep my information current.
 
-✅ **Acceptance Criteria**:  
-- I can edit my email or password.  
+✅ **Acceptance Criteria**:
+
+- I can edit my email or password.
 - Changes take effect after saving.
 
 ---
 
 **👤 Story 10: Anonymous Visitor – Understand Site Purpose**  
-*As a new visitor,*  
+_As a new visitor,_  
 I want to understand what the site offers  
 So that I know whether to sign up.
 
-✅ **Acceptance Criteria**:  
-- I see clear messaging on the homepage.  
+✅ **Acceptance Criteria**:
+
+- I see clear messaging on the homepage.
 - I’m invited to adopt, book services, or support shelters.
 
 ---
 
 **👤 Story 11: Logged-in User – Adopt a Pet (Placeholder for future)**  
-*As a registered user,*  
+_As a registered user,_  
 I want to apply to adopt a pet  
 So that I can start the process of giving it a home.
 
-✅ **Acceptance Criteria**:  
-- I can click an “Apply” button on the pet detail page.  
+✅ **Acceptance Criteria**:
+
+- I can click an “Apply” button on the pet detail page.
 - A form or message indicates that the request is received.
 
 ---
 
 **👤 Story 12: Admin – Manage Support Inquiries**  
-*As a site admin,*  
+_As a site admin,_  
 I want to manage support form submissions  
 So that I can respond to donation or volunteer interest.
 
-✅ **Acceptance Criteria**:  
-- I see support submissions in the admin.  
+✅ **Acceptance Criteria**:
+
+- I see support submissions in the admin.
 - I can mark them as resolved or contacted.
 
 ---
 
 **👤 Story 13: Visitor – Mobile-friendly Navigation**  
-*As a user on mobile,*  
+_As a user on mobile,_  
 I want to use a responsive menu  
 So that I can navigate the site easily.
 
-✅ **Acceptance Criteria**:  
-- Navbar collapses into a hamburger menu.  
+✅ **Acceptance Criteria**:
+
+- Navbar collapses into a hamburger menu.
 - All links are accessible on mobile devices.
 
 ---
 
 **👤 Story 14: Registered User – Get Feedback After Booking**  
-*As a user who books a service,*  
+_As a user who books a service,_  
 I want to get a confirmation or error message  
 So that I know whether my booking succeeded.
 
-✅ **Acceptance Criteria**:  
-- I see a success or failure message after submitting a booking.  
+✅ **Acceptance Criteria**:
+
+- I see a success or failure message after submitting a booking.
 - Errors (like missing fields) are clearly highlighted.
 
 ---
 
 **👤 Story 15: Developer – Write a Detailed README**  
-*As a developer submitting this project,*  
+_As a developer submitting this project,_  
 I want to create a professional, informative README  
 So that assessors and other developers understand the app.
 
-✅ **Acceptance Criteria**:  
-- The README explains the purpose, features, and technologies.  
+✅ **Acceptance Criteria**:
+
+- The README explains the purpose, features, and technologies.
 - All key sections (UX, Features, ERD, Deployment, Testing) are included.
-
-
 
 ## 🧭 The Scope Plane
 
@@ -253,46 +261,56 @@ So that assessors and other developers understand the app.
 The following features are included in the initial version of the **PawfectMatch** app:
 
 #### 🐾 1. Home Page
+
 - Introduces the site's purpose: pet adoption and pet services.
 - Highlights core areas: Adopt, Services, and Support.
 - Displays available pets dynamically with images and details.
 
 #### 👤 2. User Authentication
+
 - Full user registration, login, and logout using **django-allauth**.
 - Redirects users after login and logout.
 - Sign-up form includes email and password confirmation.
 
 #### 📄 3. Pet Listings
+
 - Pets are shown with name, age, breed, description, and image.
 - Clicking a pet takes users to a detail page.
 
 #### 🔍 4. Pet Detail Page
+
 - Shows full details of an individual pet.
 - Includes a button to apply for adoption (to be implemented).
 
 #### 🛠️ 5. Pet Services App
+
 - Users can browse available pet services (e.g., grooming, training).
 - Services are listed with name, description, and price.
 
 #### 📅 6. Booking Functionality
+
 - Logged-in users can book a service by selecting a date and writing a message.
 - CSRF protection and validation are included.
 - Bookings saved to the database and displayed in the admin panel.
 
 #### 💬 7. Support Page
+
 - Allows users to send inquiries or support requests.
 - Message is stored and viewable by admins via Django admin.
 
 #### 🌐 8. Navigation Bar
+
 - Contains links to Login, Logout, Sign Up, Services, and Support.
 - Navigation adjusts based on authentication state.
 - Fully responsive with Bootstrap.
 
 #### 🔐 9. Admin Panel
+
 - Admin can manage pets, services, bookings, and support inquiries.
 - Superuser created for administrative tasks.
 
 #### 📱 10. Responsive Design
+
 - Uses Bootstrap 5 for mobile, tablet, and desktop responsiveness.
 - Layout adapts to different devices gracefully.
 
@@ -311,7 +329,6 @@ These features are out of scope for this version but planned for future developm
 - 💌 Email notifications for bookings and support submissions.
 - 🌙 Dark mode UI toggle.
 - 🖼️ Custom pet profiles with galleries and reviews.
-
 
 ## 🏗️ The Structure Plane
 
@@ -369,54 +386,79 @@ The `urls.py` files are organized to include:
 
 ---
 
-
-
 ## 🦴 The Skeleton Plane
 
 ### 🔹 Wireframes
 
-Before development began, wireframes were created to map out the layout and flow of the site on mobile, tablet, and desktop. These low-fidelity sketches helped plan key design decisions including page structure, navigation, and responsive layouts.
+Before development began, wireframes were created to plan the layout and user journey across the most important pages. These low-fidelity Balsamiq-style mockups helped map out responsive layouts, user interactions, and form placements across desktop, tablet, and mobile devices.
 
-Each of the following wireframes includes:
+The wireframes ensured that the visual hierarchy and user flow aligned with the core goals of the application: promoting pet adoption, simplifying service bookings, and supporting shelter operations.
 
-- **Mobile view (320px+)**
-- **Tablet view (768px+)**
-- **Desktop view (1024px+)**
+Each wireframe was used to guide the layout decisions during development and matches the final responsive design.
 
-📸 **Wireframe Previews**
+📸 **Final Wireframes**
 
-| Mobile | Tablet | Desktop |
-|--------|--------|---------|
-| ![Mobile Wireframe](docs/wireframe-mobile.png) | ![Tablet Wireframe](docs/wireframe-tablet.png) | ![Desktop Wireframe](docs/wireframe-desktop.png) |
+| Page                                           | Preview                                                                        |
+| ---------------------------------------------- | ------------------------------------------------------------------------------ |
+| **Homepage** (Desktop, Tablet, Mobile)         | ![Homepage Wireframe](documentation/wireframes/wireframe-home.png)             |
+| **Adoptable Pets List** (Desktop)              | ![Adoptable Pets Wireframe](documentation/wireframes/wireframe-adopt-list.png) |
+| **Pet Detail Page** (Desktop, Tablet, Mobile)  | ![Pet Detail Wireframe](documentation/wireframes/wireframe-pet-detail.png)     |
+| **Booking Form** (Desktop)                     | ![Booking Form Wireframe](documentation/wireframes/wireframe-booking-form.png) |
+| **User Profile Page** (Desktop)                | ![Profile Page Wireframe](documentation/wireframes/wireframe-profile.png)      |
 
-> _Note: Replace these placeholders once final wireframe screenshots are added._
+> _Note: These wireframes reflect the actual layout and responsive behavior of the live project and were created using Balsamiq-style mockups for visual clarity and planning._
 
 ---
 
 ### 🗃️ Database Design (ERD)
 
-The Entity Relationship Diagram (ERD) below outlines the core models and relationships used in the project. This design allows for flexible, scalable data management and clear separation of user-specific content.
+### 🗃️ Database Design (ERD)
 
-📸 **ERD Preview**
+The following **Entity Relationship Diagram (ERD)** outlines the core data models and relationships used in the PawfectMatch Django application. Each model reflects a distinct part of the platform's functionality — such as pet adoption, service bookings, user messages, and authentication.
 
-![ERD Diagram](docs/erd-diagram.png)
+The diagram was created using [dbdiagram.io](https://dbdiagram.io) and is based on the actual Django models implemented in the project.
 
-| Model     | Field         | Type         | Notes                             |
-|-----------|---------------|--------------|------------------------------------|
-| Pet       | name          | CharField    | Pet’s name                         |
-|           | breed         | CharField    | Pet’s breed                        |
-|           | age           | IntegerField | Pet’s age                          |
-|           | description   | TextField    | About the pet                      |
-|           | image_url     | URLField     | Display photo                      |
-|           | available     | BooleanField | Availability toggle                |
-|           | created_by    | ForeignKey   | Linked to user (optional feature)  |
-| Service   | name          | CharField    | Type of pet service                |
-|           | description   | TextField    | Service details                    |
-|           | price         | DecimalField | Cost of service                    |
-| Booking   | user          | ForeignKey   | Linked to registered user          |
-|           | service       | ForeignKey   | Linked to a Service                |
-|           | booking_date  | DateField    | User-selected service date         |
-|           | message       | TextField    | Optional user message              |
+📸 **ERD Diagram Preview**
+
+![PawfectMatch ERD](documentation/erd/erd-diagram.png)
+
+---
+
+#### 📊 Model Overview
+
+| Model              | Field        | Type             | Notes                                      |
+|-------------------|--------------|------------------|---------------------------------------------|
+| **AdoptablePet**   | name         | CharField        | Name of the adoptable pet                   |
+|                   | breed        | CharField        | Breed of the pet                            |
+|                   | age          | IntegerField     | Age in years                                |
+|                   | description  | TextField        | Short bio or personality description        |
+|                   | image        | ImageField       | Photo uploaded via admin                    |
+|                   | created_at   | DateTimeField    | Auto-added when pet is listed               |
+| **AdoptionInterest** | pet        | FK → AdoptablePet| Links interest to a pet                     |
+|                   | name         | CharField        | Name of interested adopter                  |
+|                   | email        | EmailField       | Contact email                               |
+|                   | phone        | CharField        | Optional phone number                       |
+|                   | message      | TextField        | Message expressing adoption interest        |
+|                   | created_at   | DateTimeField    | Timestamp of the request                    |
+| **Service**        | name         | CharField        | Name of the pet service (e.g., grooming)    |
+|                   | description  | TextField        | Description of service                      |
+|                   | price        | DecimalField     | Price of the service in USD                 |
+|                   | image        | ImageField       | Optional visual for service                 |
+| **Booking**        | name         | CharField        | Name of user submitting booking             |
+|                   | email        | EmailField       | Email of user                               |
+|                   | service      | FK → Service     | Selected service                            |
+|                   | date         | DateField        | Booking date                                |
+|                   | message      | TextField        | Optional user message                       |
+|                   | paid         | BooleanField     | Stripe payment status                       |
+|                   | created_at   | DateTimeField    | Auto-added timestamp                        |
+| **SupportMessage** | name         | CharField        | Sender's name                               |
+|                   | email        | EmailField       | Sender's email                              |
+|                   | message      | TextField        | The message content                         |
+|                   | created_at   | DateTimeField    | Auto timestamp                              |
+
+---
+
+All models are linked logically via **ForeignKey relationships**, and validation is handled at both the model and form levels. Sensitive fields like emails and payment status are properly stored and protected.
 
 ---
 
@@ -430,8 +472,6 @@ The following security best practices were implemented to protect user data and 
 - **Custom Error Pages:** Friendly custom templates for 403, 404, and 500 errors to guide the user if issues occur.
 - **CSRF Protection:** Enabled by default with Django middleware on all forms.
 - **Input Validation:** Forms use Django’s built-in validation and widgets (e.g., date picker) to ensure correct inputs.
-
-
 
 ## 🎨 The Surface Plane
 
@@ -452,13 +492,13 @@ Design priorities included:
 
 The color palette is calm, approachable, and accessible:
 
-| Element            | Color Code   | Purpose                                  |
-|--------------------|--------------|-------------------------------------------|
-| Background         | `#ffffff`    | Clean white for readability               |
-| Primary Buttons    | `#0d6efd`    | Bootstrap primary blue for CTAs           |
-| Text               | `#212529`    | Near-black for optimal contrast           |
-| Navigation Bar     | `#f8f9fa`    | Light gray background (Bootstrap default) |
-| Links (hover)      | `#0056b3`    | Darker blue for hover feedback            |
+| Element         | Color Code | Purpose                                   |
+| --------------- | ---------- | ----------------------------------------- |
+| Background      | `#ffffff`  | Clean white for readability               |
+| Primary Buttons | `#0d6efd`  | Bootstrap primary blue for CTAs           |
+| Text            | `#212529`  | Near-black for optimal contrast           |
+| Navigation Bar  | `#f8f9fa`  | Light gray background (Bootstrap default) |
+| Links (hover)   | `#0056b3`  | Darker blue for hover feedback            |
 
 All colors were tested for accessibility and clarity on light and dark screens.
 
@@ -490,7 +530,6 @@ Images are central to the project’s emotional tone. Photos of pets are display
 
 ---
 
-
 ## 🛠️ Technologies Used
 
 PawfectMatch leverages modern, reliable technologies across the front-end and back-end to ensure a responsive and dynamic user experience.
@@ -505,12 +544,12 @@ A total of **17 user stories** were written, grouped under **4 Epics**:
 
 ### 📁 Epics & User Story Themes
 
-| Epic                          | Description                                                                 |
-|-------------------------------|-----------------------------------------------------------------------------|
-| **User Accounts & Authentication** | Registration, login/logout, profile access, email confirmation             |
-| **Adoption Workflow**         | Browse pets, add/delete listings (admin), adopt flow                        |
-| **Pet Services & Bookings**   | View services, book, pay via Stripe, see bookings                           |
-| **Support & Community Sharing** | Volunteer info, social sharing, confirmations, and custom error handling |
+| Epic                               | Description                                                              |
+| ---------------------------------- | ------------------------------------------------------------------------ |
+| **User Accounts & Authentication** | Registration, login/logout, profile access, email confirmation           |
+| **Adoption Workflow**              | Browse pets, add/delete listings (admin), adopt flow                     |
+| **Pet Services & Bookings**        | View services, book, pay via Stripe, see bookings                        |
+| **Support & Community Sharing**    | Volunteer info, social sharing, confirmations, and custom error handling |
 
 Each story was created using GitHub Issues with a markdown-based user story template and included clear, testable **acceptance criteria** (3–5 per story).
 
@@ -532,9 +571,7 @@ Issues were regularly updated and moved between columns throughout development t
 
 ![Agile board showing user stories organized in To Do, In Progress, and Done](documentation/agile-board.png)
 
-> 📝 *Be sure to update the image path above to match your actual screenshot filename and folder (e.g., `assets/images/agile-board.png` if you're storing it there).*
-
-
+> 📝 _Be sure to update the image path above to match your actual screenshot filename and folder (e.g., `assets/images/agile-board.png` if you're storing it there)._
 
 ### 🌐 Languages
 
@@ -580,7 +617,7 @@ Issues were regularly updated and moved between columns throughout development t
 - **dotenv / env.py** – Local environment variable management.
 - **Favicon.io** – For generating a custom site favicon.
 - **Font Awesome** – Icon library for interface icons.
-- **TinyPNG** *(planned)* – To optimize and compress uploaded images.
+- **TinyPNG** _(planned)_ – To optimize and compress uploaded images.
 
 ---
 
@@ -595,3 +632,4 @@ Django==5.2
 django-allauth==65.7.0
 sqlparse==0.5.3
 
+```
