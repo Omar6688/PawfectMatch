@@ -32,9 +32,19 @@
             </div>
             {% endif %}
 
-            {% if user.is_authenticated and not user.is_staff %}
-                <a href="{% url 'express_interest' pet.pk %}" class="btn btn-primary mt-4">🐾 Adopt this Pet</a>
-            {% endif %}
+            <!-- 🐾 Adopt This Pet button visible for all users -->
+            <div class="mt-4">
+                {% if user.is_authenticated and not user.is_staff %}
+                    <!-- Logged-in regular user -->
+                    <a href="{% url 'express_interest' pet.pk %}" class="btn btn-primary">🐾 Adopt this Pet</a>
+                {% else %}
+                    <!-- Not logged in -->
+                    <a href="{% url 'account_login' %}?next={{ request.path }}" class="btn btn-primary">🐾 Adopt this Pet</a>
+                    {% if not user.is_authenticated %}
+                        <p class="text-muted mt-2">Log in to apply for adoption.</p>
+                    {% endif %}
+                {% endif %}
+            </div>
 
             <div class="mt-4">
                 <a href="{% url 'adoptable_list' %}" class="btn btn-outline-secondary">← Back to List</a>
