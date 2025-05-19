@@ -490,17 +490,20 @@ Design priorities included:
 
 ### 🌈 Colour Scheme
 
-The color palette is calm, approachable, and accessible:
+The color palette of **PawfectMatch** is warm, accessible, and friendly — reflecting the welcoming tone of a pet adoption and care platform. Colors were selected to provide strong contrast, intuitive call-to-action highlights, and mobile readability.
 
-| Element         | Color Code | Purpose                                   |
-| --------------- | ---------- | ----------------------------------------- |
-| Background      | `#ffffff`  | Clean white for readability               |
-| Primary Buttons | `#0d6efd`  | Bootstrap primary blue for CTAs           |
-| Text            | `#212529`  | Near-black for optimal contrast           |
-| Navigation Bar  | `#f8f9fa`  | Light gray background (Bootstrap default) |
-| Links (hover)   | `#0056b3`  | Darker blue for hover feedback            |
+| Element            | Color Code   | Purpose                                             |
+|--------------------|--------------|-----------------------------------------------------|
+| Background         | `#f8f9fa`    | Light gray used for overall background and sections |
+| Navbar Background  | `#ffffff`    | Clean white for top navigation and base layout      |
+| Primary Buttons    | `#198754`    | Bootstrap green (`btn-success`) used for CTAs       |
+| Alert Highlights   | `#0d6efd`    | Bootstrap blue for flash messages and labels        |
+| Danger Buttons     | `#dc3545`    | Bootstrap red used for delete actions               |
+| Text               | `#212529`    | Very dark gray (almost black) for strong readability|
+| Hover & Links      | `#0a58ca`    | Medium blue used for interactive states             |
 
-All colors were tested for accessibility and clarity on light and dark screens.
+> 🎨 All colors were chosen with accessibility in mind, ensuring proper contrast on both light and dark screens. Button colors were selected from the Bootstrap 5 utility palette for consistency and clarity.
+
 
 ---
 
@@ -533,45 +536,6 @@ Images are central to the project’s emotional tone. Photos of pets are display
 ## 🛠️ Technologies Used
 
 PawfectMatch leverages modern, reliable technologies across the front-end and back-end to ensure a responsive and dynamic user experience.
-
----
-
-## 🛠️ Agile Planning
-
-This project was developed using the Agile methodology and GitHub Projects (Kanban board) to manage tasks and user stories effectively.
-
-A total of **17 user stories** were written, grouped under **4 Epics**:
-
-### 📁 Epics & User Story Themes
-
-| Epic                               | Description                                                              |
-| ---------------------------------- | ------------------------------------------------------------------------ |
-| **User Accounts & Authentication** | Registration, login/logout, profile access, email confirmation           |
-| **Adoption Workflow**              | Browse pets, add/delete listings (admin), adopt flow                     |
-| **Pet Services & Bookings**        | View services, book, pay via Stripe, see bookings                        |
-| **Support & Community Sharing**    | Volunteer info, social sharing, confirmations, and custom error handling |
-
-Each story was created using GitHub Issues with a markdown-based user story template and included clear, testable **acceptance criteria** (3–5 per story).
-
----
-
-### 📌 Agile Board Structure
-
-The GitHub Project board followed a classic **Kanban** format with three main columns:
-
-- **To Do** – All planned user stories
-- **In Progress** – Tasks currently being developed
-- **Done** – Completed and verified user stories
-
-Issues were regularly updated and moved between columns throughout development to reflect real progress.
-
----
-
-### 📷 Agile Board Screenshot
-
-![Agile board showing user stories organized in To Do, In Progress, and Done](documentation/agile-board.png)
-
-> 📝 _Be sure to update the image path above to match your actual screenshot filename and folder (e.g., `assets/images/agile-board.png` if you're storing it there)._
 
 ### 🌐 Languages
 
@@ -633,3 +597,288 @@ django-allauth==65.7.0
 sqlparse==0.5.3
 
 ```
+
+
+---
+
+## 🛠️ Agile Planning
+
+This project was developed using the Agile methodology and GitHub Projects (Kanban board) to manage tasks and user stories effectively.
+
+A total of **17 user stories** were written, grouped under **4 Epics**:
+
+### 📁 Epics & User Story Themes
+
+| Epic                               | Description                                                              |
+| ---------------------------------- | ------------------------------------------------------------------------ |
+| **User Accounts & Authentication** | Registration, login/logout, profile access, email confirmation           |
+| **Adoption Workflow**              | Browse pets, add/delete listings (admin), adopt flow                     |
+| **Pet Services & Bookings**        | View services, book, pay via Stripe, see bookings                        |
+| **Support & Community Sharing**    | Volunteer info, social sharing, confirmations, and custom error handling |
+
+Each story was created using GitHub Issues with a markdown-based user story template and included clear, testable **acceptance criteria** (3–5 per story).
+
+---
+
+### 📌 Agile Board Structure
+
+The GitHub Project board followed a classic **Kanban** format with three main columns:
+
+- **To Do** – All planned user stories
+- **In Progress** – Tasks currently being developed
+- **Done** – Completed and verified user stories
+
+Issues were regularly updated and moved between columns throughout development to reflect real progress.
+
+---
+
+### 📷 Agile Board Screenshot
+
+![Agile board showing user stories organized in To Do, In Progress, and Done](documentation/agile-board.png)
+
+> 📝 _Be sure to update the image path above to match your actual screenshot filename and folder (e.g., `assets/images/agile-board.png` if you're storing it there)._
+
+
+---
+
+
+---
+
+## 🚀 Deployment
+
+The **PawfectMatch** project was developed locally using `Visual Studio Code` and then deployed to **Heroku** using the Code Institute student template.
+
+### 🔗 Live Site
+
+The project is live at:  
+[https://pawfectmatch-ok-c783577133e6.herokuapp.com](https://pawfectmatch-ok-c783577133e6.herokuapp.com)
+
+---
+
+### 🛠 Version Control & Hosting
+
+- Git was used for local version control.
+- The project was pushed to GitHub at regular intervals using descriptive commit messages.
+- The repository is hosted at:  
+  [https://github.com/Omar6688/PawfectMatch](https://github.com/Omar6688/PawfectMatch)
+
+---
+
+### 💻 How to Run Locally
+
+To run the **PawfectMatch** project locally for development or testing, follow these steps:
+
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/Omar6688/PawfectMatch.git
+    ```
+
+2. **Navigate into the project directory**:
+    ```bash
+    cd PawfectMatch
+    ```
+
+3. **Create and activate a virtual environment**:
+    ```bash
+    python3 -m venv env
+    source env/bin/activate
+    ```
+
+4. **Install required dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+5. **Create a `.env` file in the root directory** and add your environment variables:
+    ```env
+    SECRET_KEY=your-secret-key
+    DEVELOPMENT=True
+    DEBUG=True
+    ALLOWED_HOSTS=localhost,127.0.0.1
+    STRIPE_PUBLIC_KEY=your-stripe-key
+    STRIPE_SECRET_KEY=your-stripe-secret
+    ```
+
+6. **Apply database migrations**:
+    ```bash
+    python3 manage.py migrate
+    ```
+
+7. **Create a superuser account (optional but recommended)**:
+    ```bash
+    python3 manage.py createsuperuser
+    ```
+
+8. **Start the development server**:
+    ```bash
+    python3 manage.py runserver
+    ```
+
+9. **Open your browser and visit**:
+    ```
+    http://localhost:8000
+    ```
+
+You should now see the **PawfectMatch** homepage running locally! 🐾
+
+
+### 🚀 Heroku Deployment
+
+The **PawfectMatch** project was deployed to Heroku using the Code Institute student template and Heroku CLI. Below are the detailed steps followed:
+
+---
+
+### 🔧 Prerequisites
+
+- GitHub repository set up with all project files.
+- `requirements.txt`, `Procfile`, and `runtime.txt` present.
+- Environment variables stored securely (locally in `.env`, and on Heroku dashboard).
+- Heroku account with CLI installed.
+- PostgreSQL add-on configured.
+
+---
+
+### 1️⃣ Prepare for Heroku
+
+1. **Add required files**:
+    - Create a `Procfile` (no file extension) with:
+        ```text
+        web: gunicorn pawfectmatch_project.wsgi
+        ```
+    - Ensure your `requirements.txt` is up to date:
+        ```bash
+        pip freeze > requirements.txt
+        ```
+
+2. **Install necessary packages** (already added):
+    ```bash
+    pip install gunicorn
+    pip install dj-database-url psycopg2-binary
+    pip install whitenoise
+    ```
+
+3. **Update `settings.py`**:
+    - Set `ALLOWED_HOSTS` to include your Heroku domain.
+    - Configure database with `dj-database-url`.
+    - Use `os.getenv()` to load environment variables.
+    - Add static/media file handling with WhiteNoise or AWS S3.
+
+---
+
+### 2️⃣ Create Heroku App
+
+1. Log in to Heroku CLI:
+    ```bash
+    heroku login
+    ```
+
+2. Create the app:
+    ```bash
+    heroku create pawfectmatch-ok
+    ```
+
+3. Add Heroku remote to Git:
+    ```bash
+    heroku git:remote -a pawfectmatch-ok
+    ```
+
+---
+
+### 3️⃣ Set Environment Variables on Heroku
+
+In the **Heroku dashboard**, go to **Settings > Reveal Config Vars** and add the following:
+
+| Key               | Value                    |
+|------------------|--------------------------|
+| SECRET_KEY        | your-django-secret-key   |
+| DEBUG             | False                    |
+| DEVELOPMENT       | False                    |
+| USE_AWS           | True (if using AWS S3)   |
+| STRIPE_PUBLIC_KEY | your-stripe-key          |
+| STRIPE_SECRET_KEY | your-stripe-secret-key   |
+| EMAIL_BACKEND     | django.core.mail.backends.smtp.EmailBackend |
+| EMAIL_HOST        | smtp.gmail.com           |
+| EMAIL_PORT        | 587                      |
+| EMAIL_USE_TLS     | True                     |
+| EMAIL_HOST_USER   | your-email@gmail.com     |
+| EMAIL_HOST_PASSWORD | your-app-password      |
+
+---
+
+### 4️⃣ Deploy to Heroku
+
+1. Push your code to Heroku:
+    ```bash
+    git push heroku main
+    ```
+
+2. Run migrations:
+    ```bash
+    heroku run python manage.py migrate
+    ```
+
+3. Create superuser on Heroku:
+    ```bash
+    heroku run python manage.py createsuperuser
+    ```
+
+---
+
+### ✅ Live Site
+
+The site is now live at:
+
+🔗 [https://pawfectmatch-ok.herokuapp.com](https://pawfectmatch-ok.herokuapp.com)
+
+You can log in using your test account or superuser credentials.
+
+---
+
+### 🧪 Notes
+
+- Static files are served via AWS S3.
+- Allauth and Stripe are fully working on production.
+- Debug mode is disabled in production.
+
+---
+
+
+## 🙌 Credits & Acknowledgments
+
+This project was developed as part of the **Code Institute Level 5 Diploma in Web Application Development**.
+
+### 💬 Special Thanks
+
+- **Gareth (My Mentor)** – A very special and sincere thank you to Gareth for his consistent guidance, encouragement, and expertise throughout this final project. His advice helped shape the project’s architecture, improve UX choices, and ensure a clear focus toward achieving a merit-level submission. As always, Gareth’s support went above and beyond, and I’m incredibly grateful for his mentorship.
+
+- **Roman (Tutor Support)** – for helping resolve advanced AWS S3 and deployment issues with patience and clear solutions.
+
+- **Code Institute** – for the structured curriculum, Django walkthroughs, and the excellent student support system, which made this full-stack project achievable.
+
+- **Balsamiq** – used to create initial wireframe layouts in a user-focused and accessible format.
+
+- **dbdiagram.io / DrawSQL** – used to generate the final Entity Relationship Diagram (ERD) for model planning and database logic.
+
+---
+
+### 🖼️ Image & Asset Sources
+
+- **Pet images**: Placeholder animal images sourced from [Pexels](https://www.pexels.com) and [Unsplash](https://unsplash.com), licensed for free use with attribution.
+- **Icons**: From [Font Awesome](https://fontawesome.com/) under their open-use license.
+- **Favicon**: Generated using [Favicon.io](https://favicon.io/).
+
+---
+
+### 🧑‍💻 Code Inspiration
+
+- Some logic and setup steps were referenced from:
+  - Django documentation: https://docs.djangoproject.com
+  - Stripe’s official documentation
+  - Community answers on [Stack Overflow](https://stackoverflow.com)
+  - Blog tutorials from [Real Python](https://realpython.com)
+
+Where code was reused or adapted, it has been clearly credited in-line or in the comments.
+
+---
+
+_This project is built for educational purposes only and is not intended for commercial deployment._
