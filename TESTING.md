@@ -221,33 +221,43 @@ Validation tools were used to check for errors, warnings, and best practice comp
 
 ---
 
-### 🟢 HTML Validation
+### ✅ HTML Validation (W3C)
 
-✅ All major pages (home, adoptable pets, booking form, profile, etc.) were tested using:
+The homepage (`base.html`) was tested using the [W3C Markup Validator](https://validator.w3.org/).
 
-- [W3C HTML Validator](https://validator.w3.org/)
-- No critical errors found
-- Minor warnings related to `target="_blank"` were resolved or justified
+✅ **Result**: No errors found after correcting misplaced `<body>` and `<script>` tags.
 
----
-
-### 🔵 CSS Validation
-
-✅ `style.css` tested using:
-
-- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
-- Result: **No errors found**
-- Vendor-prefixed properties and Bootstrap classes were excluded from warnings
+![HTML Validation Result for Homepage](documentation/testing/html-validator.png)
 
 ---
 
-### 🐍 Python Code Validation
+### CSS Validation
 
-✅ Code checked using `flake8`:
+The deployed CSS file was tested using the W3C CSS Validation Service:  
+[https://jigsaw.w3.org/css-validator/](https://jigsaw.w3.org/css-validator/)
 
-- All apps (`core`, `bookings`, `adoptions`, `services`, `support`) passed with no critical errors
-- Lines were kept under 79 characters where practical
-- Unused imports and variables were cleaned
+![CSS Validation Screenshot](documentation/testing/css-validation.png)
+
+- ✅ No errors or warnings were found in the CSS file.
+- The code passes validation and meets modern web standards for styling.
+
+
+### Python Code Validation - flake8 ✅
+
+The project’s Python code was validated using the `flake8` linter to check for syntax and style issues.
+
+**Results:**
+- ✅ No critical errors were found.
+- ⚠️ A few minor warnings were reported, including:
+  - `E501`: Line too long (exceeding 79 characters).
+  - `F401`: Unused imports (mostly in test or placeholder code).
+  - `E302`, `E305`: Expected 2 blank lines before/after function or class definitions.
+
+These are all considered minor stylistic issues and **do not impact functionality or runtime behavior**.
+
+**Conclusion:**
+The Python code is clean and functional. Minor flake8 warnings were reviewed and documented, and may be addressed in future refactoring for enhanced code readability.
+
 
 ---
 

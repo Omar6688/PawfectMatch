@@ -6,6 +6,7 @@ from services.models import Service
 from django.contrib.auth.decorators import login_required 
 import stripe
 
+
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def book_service(request, service_id):

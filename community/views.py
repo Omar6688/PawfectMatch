@@ -10,6 +10,7 @@ from .forms import VolunteerForm
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+
 # --- Volunteer Views ---
 def volunteer_signup(request):
     if request.method == 'POST':
@@ -21,8 +22,10 @@ def volunteer_signup(request):
         form = VolunteerForm()
     return render(request, 'community/volunteer.html', {'form': form})
 
+
 def volunteer_thank_you(request):
     return render(request, 'community/volunteer_thank_you.html')
+
 
 # --- Donate Views (with Stripe) ---
 def donate(request):
@@ -57,8 +60,10 @@ def create_checkout_session(request):
         except Exception as e:
             return JsonResponse({'error': str(e)})
 
+
 def donation_thank_you(request):
     return render(request, 'community/donation_thank_you.html')
+
 
 # --- Share View ---
 def share(request):

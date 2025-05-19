@@ -1,6 +1,7 @@
 from django import forms
 from .models import AdoptablePet, AdoptionInterest
 
+
 class AdoptablePetForm(forms.ModelForm):
     class Meta:
         model = AdoptablePet

@@ -3,6 +3,7 @@ import os
 from django.shortcuts import render
 from .models import Service
 
+
 def service_list(request):
     print("DEBUG:", settings.DEBUG)
     print("MEDIA_URL:", settings.MEDIA_URL)

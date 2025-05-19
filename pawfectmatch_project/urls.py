@@ -21,6 +21,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
@@ -39,4 +40,3 @@ if settings.DEBUG:
 handler403 = 'core.views.error_403'
 handler404 = 'core.views.error_404'
 handler500 = 'core.views.error_500'
-

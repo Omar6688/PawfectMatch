@@ -20,7 +20,6 @@ print("RAW USE_AWS:", os.getenv('USE_AWS'))
 print("RAW DEVELOPMENT:", os.getenv('DEVELOPMENT'))  # Confirm it's True
 
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -152,7 +151,6 @@ else:
         }
     else:
         raise ValueError("DATABASE_URL not set for production environment")
-
 
 
 # Password validation
