@@ -9,6 +9,7 @@ def adoptable_list(request):
     pets = AdoptablePet.objects.all()
     return render(request, 'adoptions/adoptable_list.html', {'pets': pets})
 
+
 def adoptable_detail(request, pk):
     pet = get_object_or_404(AdoptablePet, pk=pk)
     return render(request, 'adoptions/adoptable_detail.html', {'pet': pet})
@@ -24,6 +25,7 @@ def add_pet(request):
         form = AdoptablePetForm()
     return render(request, 'adoptions/adoptable_form.html', {'form': form, 'action': 'Add'})
 
+
 @staff_member_required
 def edit_pet(request, pk):
     pet = get_object_or_404(AdoptablePet, pk=pk)
@@ -36,6 +38,7 @@ def edit_pet(request, pk):
         form = AdoptablePetForm(instance=pet)
     return render(request, 'adoptions/adoptable_form.html', {'form': form, 'action': 'Edit'})
 
+
 @staff_member_required
 def delete_pet(request, pk):
     pet = get_object_or_404(AdoptablePet, pk=pk)
@@ -43,6 +46,7 @@ def delete_pet(request, pk):
         pet.delete()
         return redirect('adoptable_list')
     return render(request, 'adoptions/adoptable_confirm_delete.html', {'pet': pet})
+
 
 def express_interest(request, pk):
     pet = get_object_or_404(AdoptablePet, pk=pk)
@@ -61,4 +65,3 @@ def express_interest(request, pk):
         'form': form,
         'pet': pet
     })
-

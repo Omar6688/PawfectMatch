@@ -9,8 +9,7 @@
                 <li class="list-group-item">
                     <strong>Service:</strong> {{ booking.service.name }}<br>
                     <strong>Date:</strong> {{ booking.date }}<br>
-                    <strong>Message:</strong> {{ booking.message|default:"—" }}<br>
-                    <strong>Paid:</strong> {{ booking.paid|yesno:"✅ Yes,❌ No" }}<br>
+                    <strong>Message:</strong> {{ booking.message|default:"Booking confirmed" }}<br>
                     <small class="text-muted">Booked on {{ booking.created_at|date:"F j, Y, g:i a" }}</small>
                 </li>
             {% endfor %}
