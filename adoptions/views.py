@@ -3,6 +3,8 @@ from .models import AdoptablePet
 from django.contrib.admin.views.decorators import staff_member_required
 from .forms import AdoptablePetForm
 from .forms import AdoptionInterestForm
+from django.http import HttpResponseServerError
+import traceback
 
 
 def adoptable_list(request):
@@ -13,6 +15,7 @@ def adoptable_list(request):
 def adoptable_detail(request, pk):
     pet = get_object_or_404(AdoptablePet, pk=pk)
     return render(request, 'adoptions/adoptable_detail.html', {'pet': pet})
+
 
 @staff_member_required
 def add_pet(request):
@@ -57,7 +60,12 @@ def express_interest(request, pk):
             interest = form.save(commit=False)
             interest.pet = pet
             interest.save()
-            return render(request, 'adoptions/interest_success.html', {'pet': pet})
+            try:
+                return render(request, 'adoptions/interest_success.html', {'pet': pet})
+            except Exception as e:
+                error_message = f"Error rendering interest_success.html: {e}\n{traceback.format_exc()}"
+                print(error_message)
+                return HttpResponseServerError(error_message)
     else:
         form = AdoptionInterestForm()
 
