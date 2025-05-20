@@ -383,7 +383,7 @@ The diagram was created using [dbdiagram.io](https://dbdiagram.io) and is based 
 |-------------------|--------------|------------------|---------------------------------------------|
 | **AdoptablePet**   | name         | CharField        | Name of the adoptable pet                   |
 |                   | breed        | CharField        | Breed of the pet                            |
-|                   | age          | IntegerField     | Age in years                                |
+|                   | age          |PositiveIntegerField| Age in years (validation prevents negative values)|
 |                   | description  | TextField        | Short bio or personality description        |
 |                   | image        | ImageField       | Photo uploaded via admin                    |
 |                   | created_at   | DateTimeField    | Auto-added when pet is listed               |
@@ -424,6 +424,8 @@ The following security best practices were implemented to protect user data and 
 - **Custom Error Pages:** Friendly custom templates for 403, 404, and 500 errors to guide the user if issues occur.
 - **CSRF Protection:** Enabled by default with Django middleware on all forms.
 - **Input Validation:** Forms use Django’s built-in validation and widgets (e.g., date picker) to ensure correct inputs.
+- **Pet Age Validation:** The pet age field uses a `MinValueValidator(0)` to prevent negative values, ensuring data integrity in the admin panel.
+
 
 
 ---
@@ -880,8 +882,6 @@ This project was developed as part of the **Code Institute Level 5 Diploma in We
 
 Where code was reused or adapted, it has been clearly credited in-line or in the comments.
 
-
 ---
-
 
 _This project is built for educational purposes only and is not intended for commercial deployment._
