@@ -51,6 +51,10 @@ def delete_pet(request, pk):
     return render(request, 'adoptions/adoptable_confirm_delete.html', {'pet': pet})
 
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 def express_interest(request, pk):
     pet = get_object_or_404(AdoptablePet, pk=pk)
 
@@ -61,11 +65,11 @@ def express_interest(request, pk):
             interest.pet = pet
             interest.save()
             try:
+                logger.info("Trying to render interest_success.html for pet: %s", pet.name)
                 return render(request, 'adoptions/interest_success.html', {'pet': pet})
             except Exception as e:
-                error_message = f"Error rendering interest_success.html: {e}\n{traceback.format_exc()}"
-                print(error_message)
-                return HttpResponseServerError(error_message)
+                logger.error("Failed to render interest_success.html: %s", e)
+                return render(request, 'core/500.html')  # fallback template if needed
     else:
         form = AdoptionInterestForm()
 
