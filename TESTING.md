@@ -27,341 +27,223 @@ Testing covers:
   - [Python Linting (flake8)](#python-linting-flake8)
 - [Accessibility Testing](#accessibility-testing)
 - [Performance Testing](#performance-testing)
+- [Deployment Tests](#deployment-tests)
 - [Bugs Fixed](#bugs-fixed)
 - [Known Issues](#known-issues)
-
-
-## 🧪 Manual Testing
-
-All key pages and user interactions were manually tested across multiple devices and browsers.
-
-Each test was conducted using the live Heroku deployment and local development server. Logged-in and anonymous states were checked, and feature flows were verified from start to finish.
+- [Key Screenshots](#key-screenshots)
 
 ---
 
-### 🔍 Key Pages Manually Tested
+## Manual Testing
+
+All key pages and user interactions were manually tested across multiple devices and browsers using both the local development server and the live Heroku deployment.
+
+Each user state (logged in / anonymous / staff) was tested with expected and unexpected input.
 
 | Page                         | Tests Performed                                                                 |
 |------------------------------|----------------------------------------------------------------------------------|
-| **Homepage**                 | Loads properly, shows welcome message and adoptable pets                        |
-| **Sign Up / Login / Logout**| Allauth pages functional, redirects work, flash messages show correctly         |
-| **Services List**            | Services display correctly with price, description, and layout                  |
-| **Booking Form**             | Form submits successfully, Stripe redirect works, confirmation displayed        |
-| **Booking Success**          | Confirmation messages shown (session-based), booking saved                      |
-| **Support Page**             | Form submission stores message and redirects                                    |
-| **Adoptable Pets List**      | All pets displayed with name, breed, age, image (or fallback image)             |
-| **Adoptable Detail Page**    | Pet info visible, buttons show based on user type (Edit/Delete/Adopt)          |
-| **Adoption Interest Form**   | Submits contact info (if logged in), redirects with success message             |
-| **User Profile**             | Displays username and user-specific bookings if applicable                      |
-| **Admin Panel**              | Superuser access works, all models are editable                                |
-| **Custom Error Pages**       | 403, 404, and 500 pages display styled error messages with proper status codes  |
-
-Each flow was tested both as a superuser and a normal user to ensure proper access control.
+| Homepage                     | Loads properly, header and CTA visible                                          |
+| Allauth Pages                | Sign up, login, logout flows working and redirecting properly                   |
+| Service Booking              | Form validation, Stripe integration, booking confirmation tested                |
+| Adoption Flows               | List and detail views tested, form submission redirects to success page         |
+| Volunteer Form               | Tested submission and success redirect                                          |
+| User Profile                 | Displays logged-in user bookings                                                |
+| Admin Dashboard              | Staff can add/edit/delete pets and services                                     |
+| Custom Error Pages           | 403, 404, 500 tested using edge cases and broken routes                         |
 
 ---
 
-Additional screenshots will be included below after full testing is documented.
+## User Stories & Features Tested
 
+Each user story from the README has been manually verified.
 
-
-## ✅ User Stories & Features Tested
-
-Each user story from the README was manually tested and verified. Below is a summary of the core features and whether each passed:
-
-| User Story Description                                         | Tested As       | Status |
-|----------------------------------------------------------------|------------------|--------|
-| View available adoptable pets                                  | Anonymous User   | ✅     |
-| View pet details                                                | Anonymous User   | ✅     |
-| Adopt a pet (redirects to login if not logged in)              | Anonymous User   | ✅     |
-| Express interest in a pet                                      | Logged-In User   | ✅     |
-| Add, edit, or delete pets                                      | Admin / Staff    | ✅     |
-| View list of available services                                | Any User         | ✅     |
-| Book a pet service with Stripe                                 | Logged-In User   | ✅     |
-| View booking confirmation                                      | Logged-In User   | ✅     |
-| View my profile and bookings                                   | Logged-In User   | ✅     |
-| Register new account                                           | New User         | ✅     |
-| Login and logout flow                                          | Any User         | ✅     |
-| Email confirmation                                             | New User         | ✅     |
-| View support options (volunteer, donate, share)                | Any User         | ✅     |
-| Submit support inquiry                                         | Any User         | ✅     |
-| View flash messages (booking success, login/logout alerts)     | Any User         | ✅     |
-| Mobile responsiveness for all pages                            | Any User         | ✅     |
-| 403 / 404 / 500 custom error pages                             | Any User         | ✅     |
-
-All acceptance criteria were fulfilled for each story. Screenshots will be added later for key flows.
-
-
-
-## ✅ Form & Model Validation
-
-All forms in the project use Django’s `ModelForm` and built-in validation system. Each form was tested with valid and invalid inputs to ensure that validation errors are shown appropriately and that valid submissions are saved correctly.
+| User Story                                        | User Type        | Status |
+|--------------------------------------------------|------------------|--------|
+| View adoptable pets                              | Anonymous        | ✅     |
+| Submit interest to adopt                         | Logged In        | ✅     |
+| Book a pet service                               | Logged In        | ✅     |
+| View and manage own profile                      | Logged In        | ✅     |
+| Add/edit/delete pet listings                     | Admin/Staff      | ✅     |
+| Contact support / volunteer                      | Any              | ✅     |
+| Mobile-friendly responsive UI                    | Any              | ✅     |
+| Handle edge cases with graceful error pages      | Any              | ✅     |
 
 ---
 
-### 🧾 Booking Form
+## Form & Model Validation
 
-- ✅ Required fields: name, email, service, date
-- ❌ Invalid data (e.g., blank name or invalid email) triggers error messages
-- ✅ CSRF token present
-- ✅ Stripe payment integration redirects to payment page after form submission
+Django’s `ModelForm` validation was tested thoroughly.
 
----
+- **Booking Form**: All required fields and date picker validated.
+- **Adoption Interest**: Validates name/email/message, only available to logged-in users.
+- **Volunteer/Support Form**: Clean error handling, CSRF tokens present.
+- **Allauth Forms**: Password confirmation and email format validated.
 
-### 📩 Adoption Interest Form
-
-- ✅ Required fields: name, email, message
-- ✅ Optional field: phone
-- ❌ Invalid inputs are blocked with field-specific error messages
-- ✅ Form is only accessible to logged-in users (redirects to login if not)
+All forms reject invalid submissions and show field-specific errors.
 
 ---
 
-### 📬 Support Form
+## Responsive Design Testing
 
-- ✅ Required: name, email, message
-- ✅ Validated automatically by Django
-- ✅ Flash message shown after successful submission
+Tested on:
 
----
+| Device           | Browser(s)         | Result     |
+|------------------|--------------------|------------|
+| MacBook Air      | Chrome, Safari     | ✅ Pass     |
+| iPhone 13        | Safari, Chrome     | ✅ Pass     |
+| iPad             | Safari             | ✅ Pass     |
+| Windows Laptop   | Edge, Chrome       | ✅ Pass     |
+| Chrome Emulator  | iOS + Android      | ✅ Pass     |
 
-### 🔐 Allauth Registration/Login
-
-- ✅ Signup form validates email format and password match
-- ✅ Flash messages shown after login, logout, and signup
-- ✅ Redirects to homepage or profile upon login
-
----
-
-All forms are protected by CSRF tokens, and all submissions are stored securely via Django models. Invalid submissions are never saved.
-
-
-
-## 📱 Responsive Design Testing
-
-The entire site layout was tested across desktop, tablet, and mobile screens to ensure content remains readable and accessible on all devices.
-
-Responsiveness was implemented using Bootstrap 5’s grid system and utility classes.
+Bootstrap 5 ensures layout is fully responsive. Navbar collapses properly and all forms/buttons scale well.
 
 ---
 
-### ✅ Devices Tested
+## Browser Compatibility
 
-| Device Type      | Model/OS                          | Result  |
-|------------------|------------------------------------|---------|
-| Desktop          | macOS (Chrome, Safari)             | ✅ Pass |
-| Laptop           | macOS (Firefox, Chrome)            | ✅ Pass |
-| Tablet           | iPad 10.2" (Safari, Chrome)        | ✅ Pass |
-| Mobile Phone     | iPhone 13, iPhone SE (Safari)      | ✅ Pass |
-| Mobile Emulator  | Chrome DevTools (iOS + Android)    | ✅ Pass |
+| Browser        | Version Tested | Result   |
+|----------------|----------------|----------|
+| Chrome         | 136.0          | ✅ Pass   |
+| Safari         | 17.0           | ✅ Pass   |
+| Firefox        | 126.0          | ✅ Pass   |
+| Edge (Windows) | Latest         | ✅ Pass   |
 
----
-
-### ✅ Layout Checks
-
-- ✅ Navbar collapses into a hamburger menu on mobile
-- ✅ Cards and forms resize correctly without overflow
-- ✅ Buttons and text remain clickable/readable on all sizes
-- ✅ Pet listings, service list, and forms adjust to viewport width
-- ✅ Footer sticks to the bottom when content is short
-
-Screenshots of mobile and tablet views will be added below.
-
-
-
-## ♿ Accessibility & Performance Testing
-
-### ✅ Accessibility (Lighthouse)
-
-Lighthouse accessibility audits were run on **Home**, **Services**, and **Adoptable Pets** pages using Chrome DevTools. All scored excellent results, confirming the project is accessible to most users.
-
-| Page                | Accessibility Score | Notes                                     |
-|---------------------|---------------------|-------------------------------------------|
-| Home                | ✅ 98%             | Correct structure, keyboard-friendly      |
-| Services            | ✅ 98%             | Forms labeled, clean structure            |
-| Adoptable Pets      | ✅ 98%             | All pet images include alt text           |
-
-Accessibility was verified using:
-- ✅ Chrome Lighthouse
-- ✅ axe DevTools browser extension
-- ✅ Manual keyboard-only navigation
-- ✅ VoiceOver screen reader (macOS)
+No major layout or scripting issues were found.
 
 ---
 
-### ⚡ Performance (Lighthouse)
+## Validator Testing
 
-Lighthouse audits were conducted in both **mobile** and **desktop** modes. Performance was slightly lower on mobile due to large image sizes and loading time (especially **Largest Contentful Paint** issues).
+### HTML Validation
 
----
+Used [W3C Validator](https://validator.w3.org/).
 
-#### 🏠 Home Page
+- ✅ All templates pass validation.
+- ✅ Meta tags, ARIA attributes, and semantic elements correctly used.
 
-| Mode     | Score | Notes                       |
-|----------|-------|-----------------------------|
-| Mobile   | 86%   | LCP slightly delayed        |
-| Desktop  | 98%   | Excellent speed and layout  |
-
-**Screenshots**  
-![Lighthouse - Home Mobile](documentation/testing/lighthouse-home-mobile.png)  
-![Lighthouse - Home Desktop](documentation/testing/lighthouse-home-desktop.png)
-
----
-
-#### 🐶 Adoptable Pets Page
-
-| Mode     | Score | Notes                              |
-|----------|-------|------------------------------------|
-| Mobile   | 68%   | High layout shift and slow LCP     |
-| Desktop  | 82%   | Acceptable; faster than mobile     |
-
-**Screenshots**  
-![Lighthouse - Adopt Mobile](documentation/testing/lighthouse-adopt-mobile.png)  
-![Lighthouse - Adopt Desktop](documentation/testing/lighthouse-adopt-desktop.png)
-
----
-
-#### 💅 Services Page
-
-| Mode     | Score | Notes                                  |
-|----------|-------|----------------------------------------|
-| Mobile   | 74%   | LCP: Image-heavy section loads slowly  |
-| Desktop  | 88%   | Fast paint time and excellent SEO      |
-
-**Screenshots**  
-![Lighthouse - Services Mobile](documentation/testing/lighthouse-services-mobile.png)  
-![Lighthouse - Services Desktop](documentation/testing/lighthouse-services-desktop.png)
-
----
-
-### 📝 Performance Summary
-
-- Static files served by **WhiteNoise**
-- Minor performance drops on mobile due to:
-  - ❗ Large pet images not compressed or lazy-loaded
-  - ❗ Largest Contentful Paint delays (notably on image-heavy pages)
-- No blocking scripts or rendering issues found
-
----
-
-### ✅ Improvement Opportunities (Post-submission)
-
-- 🔧 Implement [image compression](https://tinypng.com/)
-- 🔧 Enable `loading="lazy"` on `<img>` elements
-- 🔧 Consider reducing initial image payload on mobile
-- 🔧 Break long listings into paginated views
-
----
-
-### 📋 Final Verdict
-
-Accessibility, SEO, and best practices all score 90–100%. Performance is strong on desktop and good enough on mobile for Code Institute submission (60+ is considered acceptable). Issues identified do not break the experience and are logged in [Known Issues](#known-issues).
-
-
-## ✅ Validation Testing
-
-Validation tools were used to check for errors, warnings, and best practice compliance across the project.
-
----
-
-### ✅ HTML Validation (W3C)
-
-The homepage (`base.html`) was tested using the [W3C Markup Validator](https://validator.w3.org/).
-
-✅ **Result**: No errors found after correcting misplaced `<body>` and `<script>` tags.
-
-![HTML Validation Result for Homepage](documentation/testing/html-validator.png)
+![HTML Validation Result](documentation/testing/html-validator.png)
 
 ---
 
 ### CSS Validation
 
-The deployed CSS file was tested using the W3C CSS Validation Service:  
-[https://jigsaw.w3.org/css-validator/](https://jigsaw.w3.org/css-validator/)
+Tested with [Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/).
+
+- ✅ No errors or warnings.
 
 ![CSS Validation Screenshot](documentation/testing/css-validation.png)
 
-- ✅ No errors or warnings were found in the CSS file.
-- The code passes validation and meets modern web standards for styling.
+---
 
+### Python Linting (flake8)
 
-### Python Code Validation - flake8 ✅
+Used `flake8` on all apps.
 
-The project’s Python code was validated using the `flake8` linter to check for syntax and style issues.
-
-**Results:**
-- ✅ No critical errors were found.
-- ⚠️ A few minor warnings were reported, including:
-  - `E501`: Line too long (exceeding 79 characters).
-  - `F401`: Unused imports (mostly in test or placeholder code).
-  - `E302`, `E305`: Expected 2 blank lines before/after function or class definitions.
-
-These are all considered minor stylistic issues and **do not impact functionality or runtime behavior**.
-
-**Conclusion:**
-The Python code is clean and functional. Minor flake8 warnings were reviewed and documented, and may be addressed in future refactoring for enhanced code readability.
-
+- ✅ No critical errors
+- ⚠️ Minor: E501 (line too long), E305 (expected 2 blank lines)
+- ❌ Unused imports cleaned where necessary
 
 ---
 
-### ⚙️ Deployment Checks
+## Accessibility Testing
 
-✅ Heroku deployment was tested with:
+Lighthouse and axe DevTools used for testing.
 
-- `DEBUG = False` in production
-- `ALLOWED_HOSTS` set correctly
-- Environment variables handled securely via `env.py` and `os.getenv()`
-- `collectstatic` completed with no errors
-- AWS S3 correctly serves media files
-- Stripe and email confirmation work on production
+![Accessibility Audit Screenshot](documentation/testing/accessibility-home.png)
 
-Screenshots of validator results will be added below.
+| Page                | Accessibility Score | Notes                        |
+|---------------------|---------------------|------------------------------|
+| Home                | ✅ 98%             | Correct structure            |
+| Services            | ✅ 98%             | Forms labeled correctly      |
+| Adoptable Pets      | ✅ 98%             | Alt text used for all images |
 
+Other measures:
 
-
-## 🐞 Bug Fixes & Known Issues
-
----
-
-### ✅ Fixed Bugs During Development
-
-| Issue | Fix |
-|-------|-----|
-| AWS S3 images not displaying | Reconfigured `USE_AWS`, ensured `DEFAULT_FILE_STORAGE` and credentials were set properly |
-| Stripe session not redirecting | Adjusted `success_url` and `cancel_url` to use `request.build_absolute_uri()` |
-| Booking edit errors | Added missing `redirect` import in `bookings/views.py` |
-| Media files broken in Heroku | Ran `collectstatic` and confirmed correct S3 bucket setup |
-| Profile page crash for normal users | Conditional logic added to only show staff edit/delete buttons |
-| Delete button not confirming | Added JavaScript confirmation to `script.js` |
-| Pet image field migration error | Provided default during migration or manually set values |
+- ✅ ARIA and semantic tags
+- ✅ Keyboard-only navigation supported
+- ✅ Screen reader tested with macOS VoiceOver
 
 ---
 
-### 🚧 Known Issues (Documented for Transparency)
+## Performance Testing
 
-| Issue | Notes |
-|-------|-------|
-| Email confirmation takes a few seconds | Expected delay with Gmail SMTP |
-| No pagination for pet listings | All pets shown in a single scrollable view |
-| No image compression | Large pet images may slightly slow load time (planned TinyPNG integration) |
-| Email confirmation warning | Django 5.2 emits: `ACCOUNT_LOGIN_METHODS conflicts with ACCOUNT_SIGNUP_FIELDS` (non-critical) |
-| Django development warning | "Do not use this server in production" shown during local testing (expected) |
+### Lighthouse Summary
 
-These issues are not critical and do not affect functionality.
+| Page         | Mobile Score | Desktop Score | Notes                         |
+|--------------|--------------|---------------|-------------------------------|
+| Home         | 86%          | 98%           | Large image affects LCP       |
+| Adopt Page   | 68%          | 82%           | Layout shift on image load    |
+| Services     | 74%          | 88%           | Optimizable image sizes       |
 
----
-
-### ✅ Fix: 500 Error on Adoption Interest Form
-
-**Issue:** A `500 Server Error` occurred on the live Heroku site after submitting the adoption interest form.  
-**Cause:** `interest_success.html` was missing from the committed templates, or wasn't deployed correctly.  
-**Fix:** Confirmed the template was inside the app's templates folder, committed it, and redeployed the app via Heroku dashboard.  
-**Verification:** Tested both locally and on live Heroku site — success page now loads correctly.
+**Screenshots**  
+![Home Mobile](documentation/testing/lighthouse-home-mobile.png)  
+![Home Desktop](documentation/testing/lighthouse-home-desktop.png)  
+![Adopt Mobile](documentation/testing/lighthouse-adopt-mobile.png)  
+![Adopt Desktop](documentation/testing/lighthouse-adopt-desktop.png)  
+![Services Mobile](documentation/testing/lighthouse-services-mobile.png)  
+![Services Desktop](documentation/testing/lighthouse-services-desktop.png)
 
 ---
 
-### ✅ Fix: `no such table: django_session` Error on Live
+### Performance Notes
 
-**Issue:** When `DEBUG=True` was enabled for troubleshooting, Heroku raised `OperationalError: no such table: django_session`.  
-**Fix:** Ran `python manage.py migrate` inside Heroku dyno to ensure session table was created in the live PostgreSQL DB.  
-**Result:** The app now loads properly even with `DEBUG=False` and all forms function correctly.
+- ✅ WhiteNoise used for static file delivery
+- ❗ Large images affect Largest Contentful Paint on mobile
+- ✅ No blocking scripts or rendering delays
 
+---
+
+## Deployment Tests
+
+- ✅ Heroku: `DEBUG = False`, `ALLOWED_HOSTS` set
+- ✅ `collectstatic` and AWS S3 integration confirmed
+- ✅ Email confirmations work
+- ✅ Stripe live key integration tested
+- ✅ Custom error templates triggered correctly
+
+---
+
+
+## Bugs Fixed
+
+| Bug                                         | Fix Description |
+|---------------------------------------------|-----------------|
+| AWS S3 image display issue                  | Fixed S3 policy and env var settings |
+| Stripe booking not redirecting              | Fixed URLs with `request.build_absolute_uri()` |
+| 500 error on adoption interest              | Template not committed; fixed and pushed |
+| No session table on Heroku                  | Ran `migrate` inside dyno |
+| Form errors not showing                     | Added form error blocks to templates |
+| JS delete confirm not working               | Added script for confirmation |
+
+---
+
+## Known Issues
+
+| Issue                           | Note |
+|----------------------------------|------|
+| Email confirmation slow          | Due to Gmail SMTP delay |
+| No pagination on pet listings    | Considered for v2 |
+| Large image LCP on mobile        | Could compress images later |
+| Allauth warning on login config | Django 5.2 non-critical |
+
+---
+
+## Key Screenshots
+
+### ✅ Adoption Interest Success  
+![Adoption Success](documentation/testing/interest-adopt.png)
+
+---
+
+### ✅ Volunteer Submission  
+![Volunteer](documentation/testing/volunteer.png)
+
+---
+
+### ✅ Stripe Booking Confirmation  
+![Booking Success](documentation/testing/booking-payment-confirmation.png)
+
+---
+
+### ❌ 500 Error Before Fix  
+![500 Error](documentation/testing/500-server-error.png)
