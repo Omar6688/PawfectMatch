@@ -3,18 +3,54 @@
 🐾 **PawfectMatch**  
 PawfectMatch is a pet adoption and service booking platform built with Django. It allows users to browse adoptable pets, book professional pet services, and support local animal shelters. The platform combines clean UX, secure user accounts, and a modular backend to serve multiple real-world needs in one responsive web app.
 
+
 ---
+
 
 📖 **Project Story**  
 This application was developed as part of the Code Institute Level 5 Diploma in Web Application Development, fulfilling the criteria for the **Full Stack Frameworks with Django** Milestone Project (Project 4).
 
 PawfectMatch was inspired by the growing demand for unified platforms that help animal lovers adopt responsibly and access trusted services. The app includes multi-app Django architecture, Stripe-ready integration, and secure user authentication. It is fully responsive and works seamlessly across desktop, tablet, and mobile.
 
-🔗 The live site will be available here: **[Live Site - PawfectMatch](#)**
-
-🖼️ _Wireframes will be added below once finalized._
 
 ---
+
+
+![Mockup](documentation/screenshots/mockup.png)
+
+
+
+### 🖥️ Responsive Layout Preview
+
+To ensure the best user experience across all devices, the PawfectMatch app was fully tested and designed using a mobile-first approach. The interface adapts to:
+
+- 📱 Mobile screens (e.g., iPhone)
+- 📲 Tablet views (responsive card layouts)
+- 💻 Desktop screens (full-width layout)
+
+Below are screenshots showing how the site renders across devices:
+
+
+
+#### 📸 Mobile View
+![Mobile Screenshot](documentation/screenshots/mobile-home.png)
+
+#### 💻 Tablet View
+![Tablet Screenshot](documentation/screenshots/tablet-home.png)
+
+#### 🖥️ Desktop View
+![Desktop Screenshot](documentation/screenshots/desktop-home.png)
+
+> These screenshots were taken on real devices using Chrome DevTools and demonstrate full responsiveness and layout adaptability.
+
+
+
+
+🔗 The live site will be available here: **[Live Site - PawfectMatch](https://pawfectmatch-ok-c783577133e6.herokuapp.com/)**
+
+
+---
+
 
 ## 📑 Table of Contents
 
@@ -22,31 +58,41 @@ PawfectMatch was inspired by the growing demand for unified platforms that help 
   - [The Strategy Plane](#the-strategy-plane)
     - [Site Goals](#site-goals)
     - [Target Audience](#target-audience)
-    - [User Stories](#user-stories)
+    - [User Stories (Agile)](#user-stories-agile)
   - [The Scope Plane](#the-scope-plane)
-    - [Features](#features)
-    - [Future Features](#future-features)
+    - [Features Implemented](#features-implemented)
+    - [Features Left to Implement](#features-left-to-implement)
   - [The Structure Plane](#the-structure-plane)
-    - [Database Models and Logic](#database-models-and-logic)
+    - [Application Structure](#application-structure)
+    - [URL Structure](#url-structure)
+    - [Views & Templates](#views--templates)
+    - [Authentication & Access Control](#authentication--access-control)
+    - [Data Flow](#data-flow)
   - [The Skeleton Plane](#the-skeleton-plane)
     - [Wireframes](#wireframes)
+    - [Database Design (ERD)](#database-design-erd)
     - [Security](#security)
   - [The Surface Plane](#the-surface-plane)
-    - [Design](#design)
-    - [Color Scheme](#color-scheme)
+    - [Design Overview](#design-overview)
+    - [Colour Scheme](#colour-scheme)
     - [Typography](#typography)
     - [Imagery](#imagery)
+- [UI Preview](#-ui-preview)
 - [Technologies Used](#technologies-used)
 - [Agile Planning](#agile-planning)
 - [Testing](#testing)
 - [Deployment](#deployment)
-- [Credits](#credits)
+- [Credits & Acknowledgments](#credits--acknowledgments)
 
-## 💡 User Experience Design
 
-### 🧭 The Strategy Plane
+---
 
-#### 🎯 Site Goals
+
+## User Experience Design
+
+### The Strategy Plane
+
+#### Site Goals
 
 The primary goal of PawfectMatch is to provide a trusted, user-friendly platform where:
 
@@ -61,7 +107,8 @@ The app supports the goals of both users and the platform owner (the shelter/ser
 - Centralized management of bookings, pets, and services.
 - A potential revenue stream via Stripe payment integration.
 
-#### 🧑‍🤝‍🧑 Target Audience
+
+#### Target Audience
 
 - Individuals or families looking to adopt a pet.
 - Pet owners searching for trusted services like grooming or training.
@@ -70,193 +117,91 @@ The app supports the goals of both users and the platform owner (the shelter/ser
 
 The platform is optimized for desktop, tablet, and mobile users, ensuring accessibility on all devices.
 
-#### 📋 User Stories
-
-Below are the primary user stories that guided the development of PawfectMatch. Each includes clear Acceptance Criteria to define completion.
 
 ---
 
-**👤 Story 1: Site Visitor – View Available Pets**  
-_As a potential adopter,_  
-I want to browse available pets with their details  
-So that I can find a pet that suits my lifestyle.
+
+## User Stories (Agile)
+
+This project followed the Agile methodology using GitHub Projects and Issues to plan and track development.
+
+A total of **17 user stories** were created and organized into **4 main Epics**:
+
+### Epics Overview
+
+| Epic                             | Description                                                    |
+|----------------------------------|----------------------------------------------------------------|
+| **User Accounts & Authentication** | Account creation, login/logout, profile, and email confirmation |
+| **Adoption Workflow**            | Browse, manage, and adopt pets (user and admin perspectives)   |
+| **Pet Services & Bookings**      | View services, book appointments, pay via Stripe               |
+| **Support & Community Sharing**  | Share site, volunteer, custom error handling, admin dashboard  |
+
+All stories include clear Acceptance Criteria and were tracked using a **Kanban board** on GitHub.
+
+🔗 **[View Agile Board on GitHub](https://github.com/users/Omar6688/projects/7)**
+
+
+
+### Sample User Stories
+
+Below are a few representative user stories from each Epic:
+
+
+**👤 User Story: Register and Log In Easily**  
+_As a new or returning user,_  
+I want to register and log in easily  
+So that I can book services or adopt pets.
 
 ✅ **Acceptance Criteria**:
+- Registration form includes email, username, and password fields.
+- Flash message appears confirming successful registration or login.
+- Logged-in user is redirected to homepage with a welcome message.
 
-- I can view a list of pets with images, breed, and description.
-- I can click to view more details about each pet.
 
----
 
-**👤 Story 2: Site Visitor – Learn About Pet Services**  
-_As a pet owner,_  
-I want to view pet services offered  
-So that I can decide which service I need.
-
-✅ **Acceptance Criteria**:
-
-- I can see a list of services with titles and descriptions.
-- I can learn what each service offers before booking.
-
----
-
-**👤 Story 3: New User – Register an Account**  
-_As a new user,_  
-I want to create an account  
-So that I can book services or apply to adopt a pet.
+**👤 User Story: Browse Adoptable Pets**  
+_As a visitor,_  
+I want to browse adoptable pets  
+So that I can decide if I want to adopt one.
 
 ✅ **Acceptance Criteria**:
+- Homepage or adoption page shows pet cards.
+- Each pet has image, name, and description.
+- Clicking a card shows full pet detail page.
 
-- I can register with a username, email, and password.
-- I am redirected and logged in after signing up.
 
----
 
-**👤 Story 4: Registered User – Book a Pet Service**  
+**👤 User Story: Book a Service**  
 _As a logged-in user,_  
-I want to book a grooming or veterinary service  
-So that I can schedule care for my pet.
+I want to book a service online  
+So that I can secure a slot for my pet.
 
 ✅ **Acceptance Criteria**:
+- Booking form includes service, date, and message field.
+- Form submission redirects to Stripe Checkout.
+- Success page shows booking confirmation.
 
-- I can select a service, choose a date, and leave a note.
-- I receive confirmation of my booking.
+
+
+**👤 User Story: Share Site on Social Media**  
+_As a user,_  
+I want to share the site on social platforms  
+So that I can help spread the word and support adoption.
+
+✅ **Acceptance Criteria**:
+- Share buttons available on homepage.
+- Icons for Facebook, Instagram, and LinkedIn.
+- Buttons open in a new tab.
+
+For a full list of all 17 stories and their acceptance criteria, please refer to the Agile board linked above.
+
 
 ---
 
-**👤 Story 5: Supporter – Learn How to Help**  
-_As a community member,_  
-I want to see how I can support shelters  
-So that I can volunteer or donate.
 
-✅ **Acceptance Criteria**:
+## The Scope Plane
 
-- I can access a Support page from the navigation.
-- I see information on donations and volunteering.
-
----
-
-**👤 Story 6: Admin – Manage Pets and Bookings**  
-_As an admin or staff member,_  
-I want to manage pets and bookings through the admin panel  
-So that I can keep listings and appointments updated.
-
-✅ **Acceptance Criteria**:
-
-- I can log into the Django admin.
-- I can add/edit/delete pets, services, and bookings.
-
----
-
-**👤 Story 7: Logged-in User – View My Bookings**  
-_As a logged-in user,_  
-I want to see all my upcoming bookings  
-So that I can manage or cancel them if needed.
-
-✅ **Acceptance Criteria**:
-
-- I can see a list of all bookings I’ve made.
-- Each booking includes the service name and date.
-
----
-
-**👤 Story 8: Logged-in User – Cancel a Booking**  
-_As a user with a booking,_  
-I want to cancel it before the scheduled time  
-So that I avoid charges or rescheduling issues.
-
-✅ **Acceptance Criteria**:
-
-- I see a “Cancel” option next to my future bookings.
-- Cancelled bookings are removed or marked clearly.
-
----
-
-**👤 Story 9: Logged-in User – Edit Account Details**  
-_As a registered user,_  
-I want to update my profile details  
-So that I can keep my information current.
-
-✅ **Acceptance Criteria**:
-
-- I can edit my email or password.
-- Changes take effect after saving.
-
----
-
-**👤 Story 10: Anonymous Visitor – Understand Site Purpose**  
-_As a new visitor,_  
-I want to understand what the site offers  
-So that I know whether to sign up.
-
-✅ **Acceptance Criteria**:
-
-- I see clear messaging on the homepage.
-- I’m invited to adopt, book services, or support shelters.
-
----
-
-**👤 Story 11: Logged-in User – Adopt a Pet (Placeholder for future)**  
-_As a registered user,_  
-I want to apply to adopt a pet  
-So that I can start the process of giving it a home.
-
-✅ **Acceptance Criteria**:
-
-- I can click an “Apply” button on the pet detail page.
-- A form or message indicates that the request is received.
-
----
-
-**👤 Story 12: Admin – Manage Support Inquiries**  
-_As a site admin,_  
-I want to manage support form submissions  
-So that I can respond to donation or volunteer interest.
-
-✅ **Acceptance Criteria**:
-
-- I see support submissions in the admin.
-- I can mark them as resolved or contacted.
-
----
-
-**👤 Story 13: Visitor – Mobile-friendly Navigation**  
-_As a user on mobile,_  
-I want to use a responsive menu  
-So that I can navigate the site easily.
-
-✅ **Acceptance Criteria**:
-
-- Navbar collapses into a hamburger menu.
-- All links are accessible on mobile devices.
-
----
-
-**👤 Story 14: Registered User – Get Feedback After Booking**  
-_As a user who books a service,_  
-I want to get a confirmation or error message  
-So that I know whether my booking succeeded.
-
-✅ **Acceptance Criteria**:
-
-- I see a success or failure message after submitting a booking.
-- Errors (like missing fields) are clearly highlighted.
-
----
-
-**👤 Story 15: Developer – Write a Detailed README**  
-_As a developer submitting this project,_  
-I want to create a professional, informative README  
-So that assessors and other developers understand the app.
-
-✅ **Acceptance Criteria**:
-
-- The README explains the purpose, features, and technologies.
-- All key sections (UX, Features, ERD, Deployment, Testing) are included.
-
-## 🧭 The Scope Plane
-
-### ✅ Features Implemented
+### Features Implemented
 
 The following features are included in the initial version of the **PawfectMatch** app:
 
@@ -314,9 +259,9 @@ The following features are included in the initial version of the **PawfectMatch
 - Uses Bootstrap 5 for mobile, tablet, and desktop responsiveness.
 - Layout adapts to different devices gracefully.
 
----
 
-### 🚧 Features Left to Implement
+
+### Features Left to Implement
 
 These features are out of scope for this version but planned for future development:
 
@@ -330,9 +275,13 @@ These features are out of scope for this version but planned for future developm
 - 🌙 Dark mode UI toggle.
 - 🖼️ Custom pet profiles with galleries and reviews.
 
-## 🏗️ The Structure Plane
 
-### 🔄 Application Structure
+---
+
+
+## The Structure Plane
+
+### Application Structure
 
 The **PawfectMatch** project is built with Django and follows a modular app structure:
 
@@ -346,9 +295,9 @@ The **PawfectMatch** project is built with Django and follows a modular app stru
 
 All Django apps are logically separated for clarity and reuse.
 
----
 
-### 🧩 URL Structure
+
+### URL Structure
 
 The `urls.py` files are organized to include:
 
@@ -359,36 +308,38 @@ The `urls.py` files are organized to include:
 - `/support/`: Support/contact page.
 - `admin/`: Django admin panel access for superusers.
 
----
 
-### 🖥️ Views & Templates
+
+### Views & Templates
 
 - Each app contains its own views and templates.
 - All templates extend `base.html`, which includes the navigation bar and Bootstrap.
 - Views are function-based for clarity and simplicity.
 - Templates use Django templating language to dynamically render content like pets and services.
 
----
 
-### 🔐 Authentication & Access Control
+
+### Authentication & Access Control
 
 - Authentication is handled by **django-allauth**.
 - Navigation adjusts based on whether the user is logged in.
 - Certain views (like bookings) are protected and require login.
 
----
 
-### 📊 Data Flow
+
+### Data Flow
 
 - Pet data is passed from the `core` views into the homepage and pet detail pages.
 - Booking data is submitted via a secure form and saved to the database.
 - Admins can access all data via the Django admin panel.
 
+
 ---
 
-## 🦴 The Skeleton Plane
 
-### 🔹 Wireframes
+## The Skeleton Plane
+
+### Wireframes
 
 Before development began, wireframes were created to plan the layout and user journey across the most important pages. These low-fidelity Balsamiq-style mockups helped map out responsive layouts, user interactions, and form placements across desktop, tablet, and mobile devices.
 
@@ -408,11 +359,9 @@ Each wireframe was used to guide the layout decisions during development and mat
 
 > _Note: These wireframes reflect the actual layout and responsive behavior of the live project and were created using Balsamiq-style mockups for visual clarity and planning._
 
----
 
-### 🗃️ Database Design (ERD)
 
-### 🗃️ Database Design (ERD)
+### Database Design (ERD)
 
 The following **Entity Relationship Diagram (ERD)** outlines the core data models and relationships used in the PawfectMatch Django application. Each model reflects a distinct part of the platform's functionality — such as pet adoption, service bookings, user messages, and authentication.
 
@@ -422,9 +371,9 @@ The diagram was created using [dbdiagram.io](https://dbdiagram.io) and is based 
 
 ![PawfectMatch ERD](documentation/erd/erd-diagram.png)
 
----
 
-#### 📊 Model Overview
+
+#### Model Overview
 
 | Model              | Field        | Type             | Notes                                      |
 |-------------------|--------------|------------------|---------------------------------------------|
@@ -456,13 +405,12 @@ The diagram was created using [dbdiagram.io](https://dbdiagram.io) and is based 
 |                   | message      | TextField        | The message content                         |
 |                   | created_at   | DateTimeField    | Auto timestamp                              |
 
----
 
 All models are linked logically via **ForeignKey relationships**, and validation is handled at both the model and form levels. Sensitive fields like emails and payment status are properly stored and protected.
 
----
 
-### 🔐 Security
+
+### Security
 
 The following security best practices were implemented to protect user data and maintain integrity of the application:
 
@@ -473,9 +421,13 @@ The following security best practices were implemented to protect user data and 
 - **CSRF Protection:** Enabled by default with Django middleware on all forms.
 - **Input Validation:** Forms use Django’s built-in validation and widgets (e.g., date picker) to ensure correct inputs.
 
-## 🎨 The Surface Plane
 
-### 🖥️ Design Overview
+---
+
+
+## The Surface Plane
+
+### Design Overview
 
 PawfectMatch is designed to be warm, welcoming, and user-friendly — reflecting the heart of pet adoption and support. The site uses generous white space, soft contrast, clear buttons, and mobile-first responsiveness to ensure an enjoyable experience on all screen sizes.
 
@@ -486,9 +438,9 @@ Design priorities included:
 - Intuitive navigation across **Home**, **Services**, and **Support**
 - Consistent use of **Bootstrap 5.3.3** for layout and styling
 
----
 
-### 🌈 Colour Scheme
+
+### Colour Scheme
 
 The color palette of **PawfectMatch** is warm, accessible, and friendly — reflecting the welcoming tone of a pet adoption and care platform. Colors were selected to provide strong contrast, intuitive call-to-action highlights, and mobile readability.
 
@@ -505,9 +457,8 @@ The color palette of **PawfectMatch** is warm, accessible, and friendly — refl
 > 🎨 All colors were chosen with accessibility in mind, ensuring proper contrast on both light and dark screens. Button colors were selected from the Bootstrap 5 utility palette for consistency and clarity.
 
 
----
 
-### 📝 Typography
+### Typography
 
 The site uses the default **Bootstrap typography system**, which ensures clean and responsive type sizing across all screen sizes:
 
@@ -518,9 +469,9 @@ The site uses the default **Bootstrap typography system**, which ensures clean a
 
 Readability was prioritized, especially for mobile users viewing pet details and service forms.
 
----
 
-### 🖼️ Imagery
+
+### Imagery
 
 Images are central to the project’s emotional tone. Photos of pets are displayed in **cards** with soft shadows, rounded corners, and alt text for accessibility.
 
@@ -531,22 +482,38 @@ Images are central to the project’s emotional tone. Photos of pets are display
 
 > Note: All images are either owned or sourced from open-license repositories like [Unsplash](https://unsplash.com) or [Pexels](https://www.pexels.com). Each image will be properly credited in the README.
 
+
 ---
 
-## 🛠️ Technologies Used
+
+## UI Preview
+
+Here are a few key screens from the live site:
+
+| Homepage | Pet Detail Page | Booking Form |
+|----------|------------------|----------------|
+| ![](documentation/screens/homepage.png) | ![](documentation/screens/pet-detail.png) | ![](documentation/screens/booking-form.png) |
+
+> _Ensure these screenshots exist in the `documentation/screens/` folder with matching filenames._
+
+
+---
+
+
+## Technologies Used
 
 PawfectMatch leverages modern, reliable technologies across the front-end and back-end to ensure a responsive and dynamic user experience.
 
-### 🌐 Languages
+### Languages
 
 - **HTML5** – For page structure and semantic markup.
 - **CSS3** – For visual styling and responsive layout.
 - **JavaScript (optional)** – For future dynamic frontend behavior.
 - **Python 3.12** – Backend language for Django framework.
 
----
 
-### 🧰 Frameworks & Libraries
+
+### Frameworks & Libraries
 
 - **Django 5.2** – High-level Python web framework used for building models, views, and forms.
 - **Django Allauth 65.7.0** – Integrated user authentication and registration.
@@ -554,16 +521,16 @@ PawfectMatch leverages modern, reliable technologies across the front-end and ba
 - **Gunicorn** – WSGI HTTP server used for production deployment.
 - **WhiteNoise** – For efficient static file handling on Heroku.
 
----
 
-### 🗃️ Databases
+
+### Databases
 
 - **SQLite3** – Used during local development for simplicity.
 - **PostgreSQL** – Production-grade relational database used on Heroku.
 
----
 
-### 🧪 Tools & Platforms
+
+### Tools & Platforms
 
 - **Visual Studio Code** – Main IDE for writing and editing code.
 - **Git** – Version control for managing changes.
@@ -573,9 +540,9 @@ PawfectMatch leverages modern, reliable technologies across the front-end and ba
 - **DrawSQL / dbdiagram.io** – For creating the ERD (Entity Relationship Diagram).
 - **Chrome DevTools** – For layout debugging, Lighthouse testing, and accessibility checks.
 
----
 
-### ⚙️ Other Utilities
+
+### Other Utilities
 
 - **pip** – Python package manager for installing project dependencies.
 - **dotenv / env.py** – Local environment variable management.
@@ -583,9 +550,9 @@ PawfectMatch leverages modern, reliable technologies across the front-end and ba
 - **Font Awesome** – Icon library for interface icons.
 - **TinyPNG** _(planned)_ – To optimize and compress uploaded images.
 
----
 
-### 📦 Python Dependencies
+
+### Python Dependencies
 
 All Python dependencies are listed in the `requirements.txt` file and installed via:
 
@@ -599,15 +566,17 @@ sqlparse==0.5.3
 ```
 
 
+
 ---
 
-## 🛠️ Agile Planning
+
+## Agile Planning
 
 This project was developed using the Agile methodology and GitHub Projects (Kanban board) to manage tasks and user stories effectively.
 
 A total of **17 user stories** were written, grouped under **4 Epics**:
 
-### 📁 Epics & User Story Themes
+### Epics & User Story Themes
 
 | Epic                               | Description                                                              |
 | ---------------------------------- | ------------------------------------------------------------------------ |
@@ -618,9 +587,9 @@ A total of **17 user stories** were written, grouped under **4 Epics**:
 
 Each story was created using GitHub Issues with a markdown-based user story template and included clear, testable **acceptance criteria** (3–5 per story).
 
----
 
-### 📌 Agile Board Structure
+
+### Agile Board Structure
 
 The GitHub Project board followed a classic **Kanban** format with three main columns:
 
@@ -630,11 +599,16 @@ The GitHub Project board followed a classic **Kanban** format with three main co
 
 Issues were regularly updated and moved between columns throughout development to reflect real progress.
 
----
 
-### 📷 Agile Board Screenshot
 
-![Agile board showing user stories organized in To Do, In Progress, and Done](documentation/agile-board.png)
+### Agile Board Screenshot
+
+- Progress Stage:
+![Agile board showing user stories organized in To Do, In Progress, and Done](documentation/agile/agile-progress.png)
+
+- Final Stage:
+![Agile board showing user stories organized in To Do, In Progress, and Done](documentation/agile/agile-final.png)
+
 
 > 📝 _Be sure to update the image path above to match your actual screenshot filename and folder (e.g., `assets/images/agile-board.png` if you're storing it there)._
 
@@ -642,29 +616,48 @@ Issues were regularly updated and moved between columns throughout development t
 ---
 
 
+## Testing
+
+Testing for this project has been fully documented in a dedicated file:
+
+📄 **[View Full Testing Documentation](TESTING.md)**
+
+It includes:
+
+- Manual testing across all core features
+- HTML and CSS validation (via W3C tools)
+- JavaScript console checks
+- Accessibility and Lighthouse performance tests
+- Responsive layout testing on mobile, tablet, desktop
+- Flake8 Python linting
+- Bug fixing logs with before/after status
+- Screenshots of key testing outputs
+
+
 ---
 
-## 🚀 Deployment
+
+## Deployment
 
 The **PawfectMatch** project was developed locally using `Visual Studio Code` and then deployed to **Heroku** using the Code Institute student template.
 
-### 🔗 Live Site
+### Live Site
 
 The project is live at:  
 [https://pawfectmatch-ok-c783577133e6.herokuapp.com](https://pawfectmatch-ok-c783577133e6.herokuapp.com)
 
----
 
-### 🛠 Version Control & Hosting
+
+### Version Control & Hosting
 
 - Git was used for local version control.
 - The project was pushed to GitHub at regular intervals using descriptive commit messages.
 - The repository is hosted at:  
   [https://github.com/Omar6688/PawfectMatch](https://github.com/Omar6688/PawfectMatch)
 
----
 
-### 💻 How to Run Locally
+
+### How to Run Locally
 
 To run the **PawfectMatch** project locally for development or testing, follow these steps:
 
@@ -722,13 +715,13 @@ To run the **PawfectMatch** project locally for development or testing, follow t
 You should now see the **PawfectMatch** homepage running locally! 🐾
 
 
-### 🚀 Heroku Deployment
+
+### Heroku Deployment
 
 The **PawfectMatch** project was deployed to Heroku using the Code Institute student template and Heroku CLI. Below are the detailed steps followed:
 
----
 
-### 🔧 Prerequisites
+### Prerequisites
 
 - GitHub repository set up with all project files.
 - `requirements.txt`, `Procfile`, and `runtime.txt` present.
@@ -736,7 +729,7 @@ The **PawfectMatch** project was deployed to Heroku using the Code Institute stu
 - Heroku account with CLI installed.
 - PostgreSQL add-on configured.
 
----
+
 
 ### 1️⃣ Prepare for Heroku
 
@@ -763,7 +756,7 @@ The **PawfectMatch** project was deployed to Heroku using the Code Institute stu
     - Use `os.getenv()` to load environment variables.
     - Add static/media file handling with WhiteNoise or AWS S3.
 
----
+
 
 ### 2️⃣ Create Heroku App
 
@@ -782,7 +775,7 @@ The **PawfectMatch** project was deployed to Heroku using the Code Institute stu
     heroku git:remote -a pawfectmatch-ok
     ```
 
----
+
 
 ### 3️⃣ Set Environment Variables on Heroku
 
@@ -803,7 +796,7 @@ In the **Heroku dashboard**, go to **Settings > Reveal Config Vars** and add the
 | EMAIL_HOST_USER   | your-email@gmail.com     |
 | EMAIL_HOST_PASSWORD | your-app-password      |
 
----
+
 
 ### 4️⃣ Deploy to Heroku
 
@@ -822,32 +815,33 @@ In the **Heroku dashboard**, go to **Settings > Reveal Config Vars** and add the
     heroku run python manage.py createsuperuser
     ```
 
----
 
-### ✅ Live Site
+
+### Live Site
 
 The site is now live at:
 
-🔗 [https://pawfectmatch-ok.herokuapp.com](https://pawfectmatch-ok.herokuapp.com)
+🔗 [https://pawfectmatch-ok.herokuapp.com](https://pawfectmatch-ok-c783577133e6.herokuapp.com/)
 
 You can log in using your test account or superuser credentials.
 
----
 
-### 🧪 Notes
+
+### Notes
 
 - Static files are served via AWS S3.
 - Allauth and Stripe are fully working on production.
 - Debug mode is disabled in production.
 
+
 ---
 
 
-## 🙌 Credits & Acknowledgments
+## Credits & Acknowledgments
 
 This project was developed as part of the **Code Institute Level 5 Diploma in Web Application Development**.
 
-### 💬 Special Thanks
+### Special Thanks
 
 - **Gareth (My Mentor)** – A very special and sincere thank you to Gareth for his consistent guidance, encouragement, and expertise throughout this final project. His advice helped shape the project’s architecture, improve UX choices, and ensure a clear focus toward achieving a merit-level submission. As always, Gareth’s support went above and beyond, and I’m incredibly grateful for his mentorship.
 
@@ -859,22 +853,25 @@ This project was developed as part of the **Code Institute Level 5 Diploma in We
 
 - **dbdiagram.io / DrawSQL** – used to generate the final Entity Relationship Diagram (ERD) for model planning and database logic.
 
----
 
-### 🖼️ Image & Asset Sources
+
+### Image & Asset Sources
 
 - **Pet images**: Placeholder animal images sourced from [Pexels](https://www.pexels.com) and [Unsplash](https://unsplash.com), licensed for free use with attribution.
 - **Icons**: From [Font Awesome](https://fontawesome.com/) under their open-use license.
 - **Favicon**: Generated using [Favicon.io](https://favicon.io/).
 
+
 ---
 
-### 🧑‍💻 Code Inspiration
+
+### Code Inspiration
 
 - Some logic and setup steps were referenced from:
   - Django documentation: https://docs.djangoproject.com
   - Stripe’s official documentation
   - Community answers on [Stack Overflow](https://stackoverflow.com)
+  - ChatGPT (OpenAI) – For helping shape this README, helping in solve bugs, and structure professional documentation. 
   - Blog tutorials from [Real Python](https://realpython.com)
 
 Where code was reused or adapted, it has been clearly credited in-line or in the comments.
