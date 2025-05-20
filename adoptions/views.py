@@ -1,10 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import AdoptablePet
 from django.contrib.admin.views.decorators import staff_member_required
-from .forms import AdoptablePetForm
-from .forms import AdoptionInterestForm
-from django.http import HttpResponseServerError
-import traceback
+from .forms import AdoptablePetForm, AdoptionInterestForm
 
 
 def adoptable_list(request):
@@ -51,10 +48,6 @@ def delete_pet(request, pk):
     return render(request, 'adoptions/adoptable_confirm_delete.html', {'pet': pet})
 
 
-import logging
-
-logger = logging.getLogger(__name__)
-
 def express_interest(request, pk):
     pet = get_object_or_404(AdoptablePet, pk=pk)
 
@@ -64,12 +57,7 @@ def express_interest(request, pk):
             interest = form.save(commit=False)
             interest.pet = pet
             interest.save()
-            try:
-                logger.info("Trying to render interest_success.html for pet: %s", pet.name)
-                return render(request, 'adoptions/interest_success.html', {'pet': pet})
-            except Exception as e:
-                logger.error("Failed to render interest_success.html: %s", e)
-                return render(request, 'core/500.html')  # fallback template if needed
+            return render(request, 'adoptions/interest_success.html', {'pet': pet})
     else:
         form = AdoptionInterestForm()
 
