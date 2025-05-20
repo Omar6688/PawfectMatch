@@ -35,11 +35,14 @@ Below are screenshots showing how the site renders across devices:
 #### 📸 Mobile View
 ![Mobile Screenshot](documentation/screenshots/mobile-home.png)
 
+
 #### 💻 Tablet View
 ![Tablet Screenshot](documentation/screenshots/tablet-home.png)
 
+
 #### 🖥️ Desktop View
 ![Desktop Screenshot](documentation/screenshots/desktop-home.png)
+
 
 > These screenshots were taken on real devices using Chrome DevTools and demonstrate full responsiveness and layout adaptability.
 
@@ -106,6 +109,7 @@ The app supports the goals of both users and the platform owner (the shelter/ser
 - Efficient connection between users and pet care providers.
 - Centralized management of bookings, pets, and services.
 - A potential revenue stream via Stripe payment integration.
+
 
 
 #### Target Audience
@@ -876,6 +880,8 @@ This project was developed as part of the **Code Institute Level 5 Diploma in We
 
 Where code was reused or adapted, it has been clearly credited in-line or in the comments.
 
+
 ---
+
 
 _This project is built for educational purposes only and is not intended for commercial deployment._

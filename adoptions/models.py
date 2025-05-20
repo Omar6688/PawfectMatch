@@ -1,10 +1,11 @@
 from django.db import models
+from django.core.validators import MinValueValidator
 
 
 class AdoptablePet(models.Model):
     name = models.CharField(max_length=100)
     breed = models.CharField(max_length=100)
-    age = models.IntegerField()
+    age = models.IntegerField(validators=[MinValueValidator(0)])
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='adoptable_pets/', blank=True, null=True)
 
