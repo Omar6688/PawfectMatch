@@ -350,3 +350,18 @@ These issues are not critical and do not affect functionality.
 
 ---
 
+### ✅ Fix: 500 Error on Adoption Interest Form
+
+**Issue:** A `500 Server Error` occurred on the live Heroku site after submitting the adoption interest form.  
+**Cause:** `interest_success.html` was missing from the committed templates, or wasn't deployed correctly.  
+**Fix:** Confirmed the template was inside the app's templates folder, committed it, and redeployed the app via Heroku dashboard.  
+**Verification:** Tested both locally and on live Heroku site — success page now loads correctly.
+
+---
+
+### ✅ Fix: `no such table: django_session` Error on Live
+
+**Issue:** When `DEBUG=True` was enabled for troubleshooting, Heroku raised `OperationalError: no such table: django_session`.  
+**Fix:** Ran `python manage.py migrate` inside Heroku dyno to ensure session table was created in the live PostgreSQL DB.  
+**Result:** The app now loads properly even with `DEBUG=False` and all forms function correctly.
+
